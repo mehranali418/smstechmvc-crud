@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbSHouseModelStoreContainer" CdmEntityContainer="dbStudentHouseEntities">
+    <EntitySetMapping Name="tb_stdHouse">
+      <EntityTypeMapping TypeName="dbSHouseModel.tb_stdHouse">
+        <MappingFragment StoreEntitySet="tb_stdHouse">
+          <ScalarProperty Name="SHouse_ID" ColumnName="SHouse_ID" />
+          <ScalarProperty Name="SHouse_Name" ColumnName="SHouse_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

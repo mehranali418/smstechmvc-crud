@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbBloodGroupModelStoreContainer" CdmEntityContainer="dbBloodGroupEntities">
+    <EntitySetMapping Name="tb_BGroup">
+      <EntityTypeMapping TypeName="dbBloodGroupModel.tb_BGroup">
+        <MappingFragment StoreEntitySet="tb_BGroup">
+          <ScalarProperty Name="BG_ID" ColumnName="BG_ID" />
+          <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

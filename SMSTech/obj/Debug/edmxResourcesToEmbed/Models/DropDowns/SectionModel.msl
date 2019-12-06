@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbSectionModelStoreContainer" CdmEntityContainer="dbSectionEntities">
+    <EntitySetMapping Name="tb_Section">
+      <EntityTypeMapping TypeName="dbSectionModel.tb_Section">
+        <MappingFragment StoreEntitySet="tb_Section">
+          <ScalarProperty Name="Section_ID" ColumnName="Section_ID" />
+          <ScalarProperty Name="Section_Name" ColumnName="Section_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

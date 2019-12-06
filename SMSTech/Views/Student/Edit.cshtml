@@ -1,0 +1,236 @@
+﻿@model SMSTech.Models.Student
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+@Html.AntiForgeryToken()
+
+<div class="tab-pane active" id="home" role="tabpanel">
+    <div class="p-20">
+        <div class="card-header bg-info">
+            <h4 class="m-b-0 text-white">Edit Student Details</h4>
+        </div>
+        <div class="card-body">
+            <form action="Edit" method="post">
+                <div class="form-body">
+                    <h3 class="card-title">Student Information</h3>
+                    <hr>
+
+                    <!--Rows With 2 Taxboxes-->
+                    <div class="row p-t-20">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">GR. No</label>
+                                <br/>
+                                @Html.TextBoxFor(model => model.GRNo, new { @placeholder = "", @class = "form-control", @required = "required", @type = "text", name = "GRNo" })
+                                @Html.ValidationMessageFor(model => model.GRNo)
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Roll No</label>
+                                <br/>
+                                @Html.TextBoxFor(model => model.RollNo, new { @placeholder = "", @class = "form-control", @required = "required", @type = "text", name = "RollNo" })
+                                @Html.ValidationMessageFor(model => model.RollNo)
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <!--/row-->
+                    <!--Rows With 2 Combobox-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group ">
+                                <label class="control-label">Class</label>
+                                <br />
+                                @Html.TextBoxFor(model => model.Class, new { @placeholder = "", @class = "form-control", @required = "required", @type = "text", name = "Class" })
+                                @*@Html.DropDownListFor(x => x.Class, new SelectList(Model.Class,"Class_ID","ClassName"), new { @placeholder = "", @class = "form-control custom-select", name = "Class" })*@
+                                 @Html.ValidationMessageFor(model => model.Class)
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group ">
+                                <label class="control-label">Section</label>
+                                <br />
+                                @Html.TextBoxFor(model => model.Section, new { @placeholder = "", @class = "form-control", @required = "required", @type = "text", name = "Section" })
+                                @Html.ValidationMessageFor(model => model.Section)
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <!--/row-->
+
+                    <div class="row p-t-20">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">First Name</label>
+                                <br />
+                                @Html.TextBoxFor(model => model.StdFirstName, new { @placeholder = "", @class = "form-control", @required = "required", @type = "text", name = "StdFirstName" })
+                                @Html.ValidationMessageFor(model => model.StdFirstName)
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Last Name</label>
+                                <br />
+                                @Html.TextBoxFor(model => model.StdLastName, new { @placeholder = "", @class = "form-control", @required = "required", @type = "text", name = "StdLastName" })
+                                @Html.ValidationMessageFor(model => model.StdLastName)
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Gender</label>
+                                @Html.TextBoxFor(model => model.Gender, new { @placeholder = "Enter Gender", @class = "form-control", @required = "required", @type = "text", name = "Gender" })
+                                @Html.ValidationMessageFor(model => model.Gender)
+
+
+
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Date of Birth</label>
+                                <br />
+                                @Html.TextBoxFor(model => model.DOB, new { @placeholder = "", @class = "form-control", @required = "required", @type = "text", name = "DOB" })
+                                @Html.ValidationMessageFor(model => model.DOB)                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+
+                    <!--Rows With 2 Combobox-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Religion</label>
+                                <br />
+                                @Html.TextBoxFor(model => model.Religion, new { @placeholder = "", @class = "form-control", @required = "required", @type = "text" })
+                                @Html.ValidationMessageFor(model => model.Religion)
+                                                               
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Place Of Birth</label>
+                                <br />
+                                @Html.TextBoxFor(model => model.POB, new { @placeholder = "", @class = "form-control", @required = "required", @type = "text" })
+                                @Html.ValidationMessageFor(model => model.POB)
+                                                                
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <!--/row-->
+                    <!--Rows With 2 Combobox-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Blood Group</label>
+                                <br />
+                                @Html.TextBoxFor(model => model.BloodGroup, new { @placeholder = "", @class = "form-control", @required = "required", @type = "text" })
+                                @Html.ValidationMessageFor(model => model.BloodGroup)
+                                
+
+                               
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Student House</label>
+                                <br />
+                                @Html.TextBoxFor(model => model.StdHouse, new { @placeholder = "", @class = "form-control", @required = "required", @type = "text" })
+                                @*@Html.ValidationMessageFor(model => model.StudentHouse)*@
+                             
+
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <!--/row-->
+
+                    <h3 class="box-title m-t-40">Address</h3>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <div class="form-group">
+                                <label>Street</label>
+                                <br />
+                                @Html.TextBoxFor(model => model.Street, new { @placeholder = "", @class = "form-control", @required = "required", @type = "text" })
+                                @Html.ValidationMessageFor(model => model.Street)
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <!--Rows With 2 Combobox-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Area</label>
+                                <br />
+                                @Html.TextBoxFor(model => model.Area, new { @placeholder = "", @class = "form-control", @required = "required", @type = "text" })
+                                @Html.ValidationMessageFor(model => model.Area)
+                                                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">City</label>
+                                <br />
+                                @Html.TextBoxFor(model => model.City, new { @placeholder = "", @class = "form-control", @required = "required", @type = "text" })
+                                @Html.ValidationMessageFor(model => model.City)
+                               
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <!--/row-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Post Code</label>
+                                <br />
+                                @Html.TextBoxFor(model => model.PCode, new { @placeholder = "", @class = "form-control", @required = "required", @type = "text" })
+                                @Html.ValidationMessageFor(model => model.PCode)
+
+
+                                                         </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Country</label>
+                                <br />
+                                @Html.TextBoxFor(model => model.Country, new { @placeholder = "", @class = "form-control", @required = "required", @type = "text" })
+                                @Html.ValidationMessageFor(model => model.Country)
+                                
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-success" />
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+               
+

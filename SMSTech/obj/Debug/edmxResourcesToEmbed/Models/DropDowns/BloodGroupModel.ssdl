@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbBloodGroupModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'dbSMSTech.dbo.tb_BGroup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tb_BGroup">
+    <Key>
+      <PropertyRef Name="BG_ID" />
+    </Key>
+    <Property Name="BG_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BloodGroup" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="dbBloodGroupModelStoreContainer">
+    <EntitySet Name="tb_BGroup" EntityType="Self.tb_BGroup" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tb_BGroup].[BG_ID] AS [BG_ID], 
+    [tb_BGroup].[BloodGroup] AS [BloodGroup]
+    FROM [dbo].[tb_BGroup] AS [tb_BGroup]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

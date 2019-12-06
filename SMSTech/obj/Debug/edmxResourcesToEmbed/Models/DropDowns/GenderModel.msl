@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GenderModelStoreContainer" CdmEntityContainer="dbGenderConnection">
+    <EntitySetMapping Name="tb_Gender">
+      <EntityTypeMapping TypeName="GenderModel.tb_Gender">
+        <MappingFragment StoreEntitySet="tb_Gender">
+          <ScalarProperty Name="Gender_ID" ColumnName="Gender_ID" />
+          <ScalarProperty Name="G_Name" ColumnName="G_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

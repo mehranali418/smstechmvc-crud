@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbClassModelStoreContainer" CdmEntityContainer="dbClassEntities">
+    <EntitySetMapping Name="tb_Class">
+      <EntityTypeMapping TypeName="dbClassModel.tb_Class">
+        <MappingFragment StoreEntitySet="tb_Class">
+          <ScalarProperty Name="Class_ID" ColumnName="Class_ID" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

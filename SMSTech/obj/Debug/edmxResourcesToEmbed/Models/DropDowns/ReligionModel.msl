@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbReligionModelStoreContainer" CdmEntityContainer="dbReligionEntities">
+    <EntitySetMapping Name="tb_Religion">
+      <EntityTypeMapping TypeName="dbReligionModel.tb_Religion">
+        <MappingFragment StoreEntitySet="tb_Religion">
+          <ScalarProperty Name="Religion_ID" ColumnName="Religion_ID" />
+          <ScalarProperty Name="Religion" ColumnName="Religion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
