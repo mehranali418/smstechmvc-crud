@@ -1,5 +1,4 @@
-﻿@model SMSTech.Models.DropDowns.Drop
-@{
+﻿@{
     ViewBag.Title = "AdmissionForm";
     Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
@@ -77,14 +76,12 @@
                                             <div class="col-md-6">
                                                 <div class="form-group ">
                                                     <label class="control-label">Class</label>
-                                             @Html.DropDownListFor(x => x.Class, new SelectList(Model.Class, "Class_ID", "ClassName"), "Select Class", new { @placeholder = "", @class = "form-control custom-select", name = "Class" })
                                                 </div>
                                             </div>
                                             <!--/span-->
                                             <div class="col-md-6">
                                                 <div class="form-group ">
                                                     <label class="control-label">Section</label>
-                                                    @Html.DropDownListFor(x => x.Section, new SelectList(Model.Section, "Section_ID", "Section_Name"), "Select Section", new { @placeholder = "", @class = "form-control custom-select", name = "Section" })
 
 
                                                 </div>
@@ -113,7 +110,6 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="control-label">Gender</label>
-                                                    @Html.DropDownListFor(x => x.Gender, new SelectList(Model.Gender, "Gender_ID", "G_Name"), "Select Department", new { @placeholder = "", @class = "form-control custom-select", name = "Gender" })
                                                     <small class="form-control-feedback"> Select your gender </small>
                                                 </div>
                                             </div>
@@ -134,14 +130,12 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="control-label">Religion</label>
-                                                    @Html.DropDownListFor(x => x.Religion, new SelectList(Model.Religion, "Religion_ID", "Religion"), "Select Religion", new { @placeholder = "", @class = "form-control custom-select", name = "Religion" })
                                                 </div>
                                             </div>
                                             <!--/span-->
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="control-label">Place Of Birth</label>
-                                                    @Html.DropDownListFor(x => x.POB, new SelectList(Model.POB, "CityID", "City_Name"), "Select City", new { @placeholder = "", @class = "form-control custom-select", name = "POB" })
                                                 </div>
                                             </div>
                                             <!--/span-->
@@ -152,7 +146,6 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="control-label">Blood Group</label>
-                                                    @Html.DropDownListFor(x => x.BloodGroup, new SelectList(Model.BloodGroup, "BG_ID", "BloodGroup"), "Select Blood Group", new { @placeholder = "", @class = "form-control custom-select", name = "BloodGroup" })
                                                 </div>
                                             </div>
                                             <!--/span-->
@@ -164,7 +157,6 @@
 
 
 
-                                                    @Html.DropDownListFor(x => x.StudentHouse, new SelectList(Model.StudentHouse, "SHouse_ID", "SHouse_Name"), "Select Student House", new { @placeholder = "", @class = "form-control custom-select", name = "StdHouse" })
                                                     </div>
                                             </div>
                                             <!--/span-->

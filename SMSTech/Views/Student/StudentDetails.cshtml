@@ -1,5 +1,5 @@
 ﻿@model System.Data.DataTable
-@{
+    @{
     ViewBag.Title = "StudentDetails";
     Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
@@ -34,20 +34,21 @@
                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th>Roll #</th>
-                                <th>Student Name</th>
-                                <th>Date Of Birth</th>
-                                <th>Place Of Birth</th>
-                                <th>Father Name</th>
-                                <th>Father CNIC</th>
-                                <th>Address</th>
-                                <th>Permanant Address</th>
-                                <th>Contact No</th>
-                                <th>Date Of Join</th>
-                                <th>Class</th>
-                                <th>Student Fees</th>
-                                <th>Image</th>
+                              <th>  Name          </th>
+                              <th>  DOB           </th>
+                              <th>  POB           </th>
+                              <th>  Fname         </th>
+                              <th>  FNIC          </th>
+                              <th>  Address       </th>
+                              <th>  Paddress      </th>
+                              <th>  contact       </th>
+                              <th>  DOJ           </th>
+                              <th>  Fess          </th>
+                              <th>  ImagePath     </th>
+                              <th>  Class       </th>
+
                                 
+                                                               
                            </tr>
                         </thead>
                         <tfoot>
@@ -67,11 +68,7 @@
                                     <td>@Model.Rows[i][10]</td>
                                     <td>@Model.Rows[i][11]</td>
                                     <td>@Model.Rows[i][12]</td>
-                                    <td>@Model.Rows[i][13]</td>
-                                    <td>@Model.Rows[i][10]</td>
-                                    <td>@Model.Rows[i][11]</td>
-                                    <td>@Model.Rows[i][12]</td>
-                                    <td>@Model.Rows[i][13]</td>
+                                   
                                     
                                     <td><a href="@Url.Action("Edit", "Student", new {@id=Model.Rows[i][0]})">Edit</a></td>
                                     <td><a href="@Url.Action("Delete", "Student", new { @id = Model.Rows[i][0] })">Delete</a></td>

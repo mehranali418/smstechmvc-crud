@@ -21,3 +21,31 @@ C:\Users\Bilal\documents\visual studio 2013\Projects\SMSTech\SMSTech\bin\System.
 C:\Users\Bilal\documents\visual studio 2013\Projects\SMSTech\SMSTech\obj\Debug\SMSTech.dll
 C:\Users\Bilal\documents\visual studio 2013\Projects\SMSTech\SMSTech\obj\Debug\SMSTech.pdb
 C:\Users\Bilal\documents\visual studio 2013\Projects\SMSTech\SMSTech\obj\Debug\SMSTech.csprojResolveAssemblyReference.cache
+F:\SMSTECHFrontEnd\SMSTech\obj\Debug\SMSTech.csprojResolveAssemblyReference.cache
+F:\SMSTECHFrontEnd\SMSTech\obj\Debug\SMSTech.dll
+F:\SMSTECHFrontEnd\SMSTech\obj\Debug\SMSTech.pdb
+F:\SMSTECHFrontEnd\SMSTech\bin\SMSTech.dll.config
+F:\SMSTECHFrontEnd\SMSTech\bin\SMSTech.dll
+F:\SMSTECHFrontEnd\SMSTech\bin\SMSTech.pdb
+F:\SMSTECHFrontEnd\SMSTech\bin\EntityFramework.dll
+F:\SMSTECHFrontEnd\SMSTech\bin\EntityFramework.SqlServer.dll
+F:\SMSTECHFrontEnd\SMSTech\bin\Microsoft.Web.Infrastructure.dll
+F:\SMSTECHFrontEnd\SMSTech\bin\System.Web.Helpers.dll
+F:\SMSTECHFrontEnd\SMSTech\bin\System.Web.Mvc.dll
+F:\SMSTECHFrontEnd\SMSTech\bin\System.Web.Razor.dll
+F:\SMSTECHFrontEnd\SMSTech\bin\System.Web.WebPages.Deployment.dll
+F:\SMSTECHFrontEnd\SMSTech\bin\System.Web.WebPages.dll
+F:\SMSTECHFrontEnd\SMSTech\bin\System.Web.WebPages.Razor.dll
+F:\SMSTECHFrontEnd\SMSTech\bin\EntityFramework.xml
+F:\SMSTECHFrontEnd\SMSTech\bin\EntityFramework.SqlServer.xml
+F:\SMSTECHFrontEnd\SMSTech\bin\System.Web.Helpers.xml
+F:\SMSTECHFrontEnd\SMSTech\bin\System.Web.Mvc.xml
+F:\SMSTECHFrontEnd\SMSTech\bin\System.Web.Razor.xml
+F:\SMSTECHFrontEnd\SMSTech\bin\System.Web.WebPages.xml
+F:\SMSTECHFrontEnd\SMSTech\bin\System.Web.WebPages.Deployment.xml
+F:\SMSTECHFrontEnd\SMSTech\bin\System.Web.WebPages.Razor.xml
+F:\SMSTECHFrontEnd\SMSTech\bin\Newtonsoft.Json.Bson.dll
+F:\SMSTECHFrontEnd\SMSTech\bin\Newtonsoft.Json.dll
+F:\SMSTECHFrontEnd\SMSTech\bin\Newtonsoft.Json.xml
+F:\SMSTECHFrontEnd\SMSTech\bin\Newtonsoft.Json.Bson.pdb
+F:\SMSTECHFrontEnd\SMSTech\bin\Newtonsoft.Json.Bson.xml

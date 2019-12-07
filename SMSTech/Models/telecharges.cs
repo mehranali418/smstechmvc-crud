@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace SMSTech.Models
+{
+    public class telecharges
+    {
+        public string TExpName { get; set; }
+        public string TExpDate { get; set; }
+        public string TAmount { get; set; }
+    }
+}

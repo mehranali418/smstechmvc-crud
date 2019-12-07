@@ -436,12 +436,18 @@
                         <li>
                             <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Expenses</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="#">Add Expense</a></li>
-                                <li><a href="#">Search Expense</a></li>
-                                <li><a href="#">Expense Head</a></li>
-                                <li><a href="@Url.Action("GasBill","Bills")">Bills</a></li>
+                                <li><a href="@Url.Action("WaterCharges", "Watercharges")">Water Charges</a></li>
+                                <li><a href="@Url.Action("TransportCharges", "TransportCharges")">Transport Charges</a></li>
+                                <li><a href="@Url.Action("telecharges", "telecharges")">Telephone Charges</a></li>
+                                <li><a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><span class="hide-menu">Bill</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+
+                                        <li><a href="@Url.Action("Gas", "Gas")">Gas Bill</a></li>
+                                        <li><a href="@Url.Action("Electricity", "Electricity")">Electric Bill</a></li>
+</ul>
 
 
+</li>
                             </ul>
                         </li>
 

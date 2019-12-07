@@ -15,8 +15,5 @@ namespace SMSTech.Models
         public string MCNIC { get; set; }
         public string MContactNo { get; set; }
         public string MOccupation { get; set; }
-
-
-       
     }
 }
