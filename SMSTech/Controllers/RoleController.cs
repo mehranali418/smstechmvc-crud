@@ -13,9 +13,11 @@ namespace SMSTech.Controllers
 {
     public class RoleController : Controller
     {
+        Roles Role = new Roles();
+
         // GET: Role
         
-        public ActionResult RolesView(Roles r)
+        public ActionResult Index()
         {
             DataTable dt = new DataTable();
 
@@ -26,7 +28,6 @@ namespace SMSTech.Controllers
                 JArray jsonArray = JArray.Parse(json);
                 int lenght = jsonArray.Count;
                 dynamic data;
-                Roles Role = new Roles();
 
                 dt.Columns.Add("Name");
                 dt.Columns.Add("Type");
@@ -49,5 +50,29 @@ namespace SMSTech.Controllers
             return View(dt);
         
         }
+
+        public ActionResult AddRoles()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult AddRoles(Roles Role)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://192.168.0.119:3000/");
+            var response = client.PostAsJsonAsync("role/AddRoles", Role).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                Console.Write("Success");
+            }
+            else
+            {
+                Console.Write("Error");
+            }
+            return View(Role);
+        }
+
     }
 }

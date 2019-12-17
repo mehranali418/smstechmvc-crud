@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,9 +13,11 @@ namespace SMSTech.Controllers
 {
     public class SectionController : Controller
     {
+        Section Sec = new Section();
+
         //
         // GET: /Section/
-        public ActionResult SectionView()
+        public ActionResult Index()
         {
               DataTable dt = new DataTable();
 
@@ -25,7 +28,6 @@ namespace SMSTech.Controllers
                 JArray jsonArray = JArray.Parse(json);
                 int lenght = jsonArray.Count;
                 dynamic data;
-                Section Sec = new Section();
 
                 dt.Columns.Add("Name");
                 dt.Columns.Add("ClassID");
@@ -49,6 +51,28 @@ namespace SMSTech.Controllers
         
 
         }
+
+        public ActionResult AddSection()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddSection(Section Sec)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://192.168.0.119:3000/");
+            var response = client.PostAsJsonAsync("section/AddSection", Sec).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                Console.Write("Success");
+            }
+            else
+            {
+                Console.Write("Error");
+            }
+            return View(Sec);
+        }
+
 	}
 }
 

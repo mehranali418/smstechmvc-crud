@@ -11,35 +11,40 @@ using System.Web.Mvc;
 
 namespace SMSTech.Controllers
 {
-    public class RankController : Controller
+    public class ExamTestController : Controller
     {
-        Rank rank = new Rank();
 
+        ExamTests ExamTest = new ExamTests();
         //
-        // GET: /Rank/
+        // GET: /ExamTests/
         public ActionResult Index()
         {
             DataTable dt = new DataTable();
 
             using (WebClient webClient = new System.Net.WebClient())
             {
-                var url = "http://192.168.0.119:3000/Rank";
+                var url = "http://192.168.0.119:3000/examTest";
                 var json = webClient.DownloadString(url);
                 JArray jsonArray = JArray.Parse(json);
                 int lenght = jsonArray.Count;
                 dynamic data;
+                
 
                 dt.Columns.Add("Name");
-
+                dt.Columns.Add("details");
 
                 for (int i = 0; i < lenght; i++)
                 {
                     data = JObject.Parse(jsonArray[i].ToString());
 
-                    rank.name = data.Name;
+                    ExamTest.Name = data.Name;
+                    ExamTest.details = data.Detail;
+
 
                     dt.Rows.Add();
-                    dt.Rows[i]["Name"] = rank.name;
+                    dt.Rows[i]["Name"] = ExamTest.Name;
+                    dt.Rows[i]["details"] = ExamTest.details;
+
 
                 }
             }
@@ -47,16 +52,16 @@ namespace SMSTech.Controllers
         }
 
 
-        public ActionResult AddRanks()
+        public ActionResult AddExam()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult AddRanks(Rank rank)
+        public ActionResult AddExam(ExamTests ExamTest)
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://192.168.0.119:3000/");
-            var response = client.PostAsJsonAsync("rank/AddRanks", rank).Result;
+            var response = client.PostAsJsonAsync("examTest/AddExam", ExamTest).Result;
             if (response.IsSuccessStatusCode)
             {
                 Console.Write("Success");
@@ -65,7 +70,7 @@ namespace SMSTech.Controllers
             {
                 Console.Write("Error");
             }
-            return View(rank);
+            return View(ExamTest);
         }
 	}
 }

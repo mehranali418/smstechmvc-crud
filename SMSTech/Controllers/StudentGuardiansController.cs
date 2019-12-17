@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,9 +13,11 @@ namespace SMSTech.Controllers
 {
     public class StudentGuardiansController : Controller
     {
+        StudentGuardians stdGuardian = new StudentGuardians();
+
         //
         // GET: /StudentGuardians/
-        public ActionResult StudentGuardiansView()
+        public ActionResult Index()
         {
             DataTable dt = new DataTable();
 
@@ -25,7 +28,6 @@ namespace SMSTech.Controllers
                 JArray jsonArray = JArray.Parse(json);
                 int lenght = jsonArray.Count;
                 dynamic data;
-                StudentGuardians stdGuardian = new StudentGuardians();
 
                 dt.Columns.Add("Name  ");
                 dt.Columns.Add("Phone ");
@@ -62,6 +64,28 @@ namespace SMSTech.Controllers
                 }
             }
             return View(dt);
+        }
+
+
+        public ActionResult AddStudentGuardians()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddStudentGuardians(StudentGuardians stdGuardian)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://192.168.0.119:3000/");
+            var response = client.PostAsJsonAsync("studentGuardian/AddStudentGuardians", stdGuardian).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                Console.Write("Success");
+            }
+            else
+            {
+                Console.Write("Error");
+            }
+            return View(stdGuardian);
         }
     }
 }

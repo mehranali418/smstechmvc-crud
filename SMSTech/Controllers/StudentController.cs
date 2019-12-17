@@ -20,7 +20,7 @@ namespace SMSTech.Controllers
         [HttpGet]
         public ActionResult Index(int? ByID)
         {
-            
+
             Student Stud = new Student();
             DataTable dt = new DataTable();
 
@@ -28,7 +28,7 @@ namespace SMSTech.Controllers
             {
                 string url;
 
-                if (ByID==null)
+                if (ByID == null)
                 {
                     //url = null;
                     url = "http://192.168.0.119:3000/student";
@@ -36,9 +36,9 @@ namespace SMSTech.Controllers
                 else
                 {
                     //url = null;
-                    url = "http://192.168.0.119:3000/student/"+ByID.ToString();
+                    url = "http://192.168.0.119:3000/student/" + ByID.ToString();
                 }
-                
+
                 var json = webClient.DownloadString(url);
                 JArray jsonArray = JArray.Parse(json);
                 int lenght = jsonArray.Count;
@@ -110,6 +110,7 @@ namespace SMSTech.Controllers
             return View(dt);
         }
 
+       
         public ActionResult AddStudent()
         {
             return View();

@@ -5,16 +5,19 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 
 namespace SMSTech.Controllers
 {
-    public class ReligionsController : Controller
+    public class ReligionController : Controller
     {
+        Religions Rel = new Religions();
+
         //
         // GET: /Religions/
-        public ActionResult ReligionsView()
+        public ActionResult Index()
         {
 
             DataTable dt = new DataTable();
@@ -26,7 +29,6 @@ namespace SMSTech.Controllers
                 JArray jsonArray = JArray.Parse(json);
                 int lenght = jsonArray.Count;
                 dynamic data;
-                Religions Rel = new Religions();
                 
                 dt.Columns.Add("Name");
 
@@ -44,6 +46,28 @@ namespace SMSTech.Controllers
                 }
             }
             return View(dt);
+        }
+
+
+        public ActionResult AddReligions()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddReligions(Religions Rel)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://192.168.0.119:3000/");
+            var response = client.PostAsJsonAsync("religion/Addreligions", Rel).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                Console.Write("Success");
+            }
+            else
+            {
+                Console.Write("Error");
+            }
+            return View(Rel);
         }
 	}
 }

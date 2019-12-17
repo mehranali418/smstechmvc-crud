@@ -6579,15 +6579,15 @@
     <Compile Include="ConnectionString.cs" />
     <Compile Include="Controllers\BillsController.cs" />
     <Compile Include="Controllers\ClassesController.cs" />
-    <Compile Include="Controllers\classLevelsController.cs" />
+    <Compile Include="Controllers\ClassLevelsController.cs" />
     <Compile Include="Controllers\ClosingController.cs" />
     <Compile Include="Controllers\EducationsController.cs" />
     <Compile Include="Controllers\ElectricityController.cs" />
-    <Compile Include="Controllers\ExamTestsController.cs" />
+    <Compile Include="Controllers\ExamTestController.cs" />
     <Compile Include="Controllers\GasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RankController.cs" />
-    <Compile Include="Controllers\ReligionsController.cs" />
+    <Compile Include="Controllers\ReligionController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SectionController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -9401,18 +9401,34 @@
     <Content Include="Views\Electricity\Electricity.cshtml" />
     <Content Include="Views\Watercharges\WaterCharges.cshtml" />
     <Content Include="Views\telecharges\telecharges.cshtml" />
-    <Content Include="Views\Section\SectionView.cshtml" />
-    <Content Include="Views\Religions\ReligionsView.cshtml" />
-    <Content Include="Views\User\UserView.cshtml" />
-    <Content Include="Views\Role\RolesView.cshtml" />
-    <Content Include="Views\Classes\ClassesView.cshtml" />
-    <Content Include="Views\Educations\EducationView.cshtml" />
-    <Content Include="Views\ExamTests\ExamTestView.cshtml" />
-    <Content Include="Views\StudentRelations\StudentRelationsView.cshtml" />
-    <Content Include="Views\StudentGuardians\StudentGuardiansView.cshtml" />
-    <Content Include="Views\classLevels\classLevelsView.cshtml" />
-    <Content Include="Views\Rank\RankView.cshtml" />
+    <Content Include="Views\Section\Index.cshtml" />
+    <Content Include="Views\Religions\Index.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Classes\Index.cshtml" />
+    <Content Include="Views\Educations\Index.cshtml" />
+    <Content Include="Views\ExamTests\Index.cshtml" />
+    <Content Include="Views\StudentRelations\Index.cshtml" />
+    <Content Include="Views\StudentGuardians\Index.cshtml" />
+    <Content Include="Views\ClassLevels\Index.cshtml" />
+    <Content Include="Views\Rank\Index.cshtml" />
     <Content Include="Views\StudentGroups\StudentGroupsView.cshtml" />
+    <Content Include="Views\Classes\AddClasses.cshtml" />
+    <Content Include="Views\ClassLevels\AddClassLevel.cshtml" />
+    <Content Include="Views\Educations\AddEducation.cshtml" />
+    <Content Include="Views\Electricity\create.cshtml" />
+    <Content Include="Views\ExamTests\AddExam.cshtml" />
+    <Content Include="Views\Rank\AddRanks.cshtml" />
+    <Content Include="Views\Religions\AddReligions.cshtml" />
+    <Content Include="Views\Gas\create.cshtml" />
+    <Content Include="Views\Role\AddRoles.cshtml" />
+    <Content Include="Views\StudentGuardians\AddStudentGuardians.cshtml" />
+    <Content Include="Views\StudentRelations\AddRelations.cshtml" />
+    <Content Include="Views\TransportCharges\create.cshtml" />
+    <Content Include="Views\Watercharges\create.cshtml" />
+    <Content Include="Views\Student\AddStudent.cshtml" />
+    <Content Include="Views\Section\AddSection.cshtml" />
+    <Content Include="Views\User\AddUser.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -9423,7 +9439,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Bills\" />
-    <Folder Include="Views\TransportCharges\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

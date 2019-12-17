@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SMSTech.Models;
+using System.Net.Http;
 
 namespace SMSTech.Controllers
 {
@@ -14,7 +15,9 @@ namespace SMSTech.Controllers
     {
         //
         // GET: /StudentRelations/
-        public ActionResult StudentRelationsView()
+        StudentRelations SRelation = new StudentRelations();
+
+        public ActionResult Index()
         {
             DataTable dt = new DataTable();
 
@@ -25,7 +28,7 @@ namespace SMSTech.Controllers
                 JArray jsonArray = JArray.Parse(json);
                 int lenght = jsonArray.Count;
                 dynamic data;
-                StudentRelations SRelation = new StudentRelations();
+                
 
                 dt.Columns.Add("Name");
 
@@ -43,6 +46,30 @@ namespace SMSTech.Controllers
                 }
             }
             return View(dt);
+        }
+
+
+        public ActionResult AddRelations()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult AddRelations(StudentRelations SRelation)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://192.168.0.119:3000/");
+            var response = client.PostAsJsonAsync("studentRelation/AddRelations", SRelation).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                Console.Write("Success");
+            }
+            else
+            {
+                Console.Write("Error");
+            }
+            return View(SRelation);
         }
 	}
 }
