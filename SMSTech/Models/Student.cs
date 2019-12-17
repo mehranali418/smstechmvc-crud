@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,23 +8,28 @@ namespace SMSTech.Models
 {
     public class Student
     {
-        public int ID { get; set; }
-
-        public string Name { get; set; }
-        public string DOB { get; set; }
-        public string POB { get; set; }
-        public string Fname { get; set; }
-        public string FNIC { get; set; }
-        public string Address { get; set; }
-        public string Paddress { get; set; }
-        public string contact { get; set; }
-        public string DOJ { get; set; }
-        public string Fess { get; set; }
-        public string ImagePath { get; set; }
-        public string ClassID { get; set; }
-
         
+        public int secid { get; set; }
+        public int uid { get; set; }
+        public string rollNo { get; set; }
+        public string name { get; set; }
+        public string sDate { get; set; }
+        public int status { get; set; }
+        public string image { get; set; }
+        public string DOB { get; set; }
+        public string sNIC { get; set; }
+        public int famid { get; set; }
+        public int gender { get; set; }
+        public int Cid { get; set; }
+        public string leaveDate { get; set; }
+        public string regNo { get; set; }
+        public int NatId { get; set; }
+        public int relId { get; set; }
+        public string email { get; set; }
+        public int StuGrpId { get; set; }        
     }
+
+
 
     
 }

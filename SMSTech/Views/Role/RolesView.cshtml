@@ -1,10 +1,11 @@
 ﻿@model System.Data.DataTable
-    @{
-    ViewBag.Title = "StudentDetails";
+
+@{
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
 
-   <!-- Bread crumb and right sidebar toggle -->
+<!-- Bread crumb and right sidebar toggle -->
 <!-- ============================================================== -->
 <div class="row page-titles">
     <div class="col-md-5 align-self-center">
@@ -29,59 +30,40 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-body">            
+            <div class="card-body">
                 <div class="table-responsive m-t-40">
                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                              <th>  Name          </th>
-                              <th>  DOB           </th>
-                              <th>  POB           </th>
-                              <th>  Fname         </th>
-                              <th>  FNIC          </th>
-                              <th>  Address       </th>
-                              <th>  Paddress      </th>
-                              <th>  contact       </th>
-                              <th>  DOJ           </th>
-                              <th>  Fess          </th>
-                              <th>  ImagePath     </th>
-                              <th>  Class       </th>
+                                <th>  Name         </th>
+                                <th>  Type         </th>
 
-                                
-                                                               
-                           </tr>
+                                <th>Edit</th>
+                                <th>Delete</th>
+
+                            </tr>
                         </thead>
                         <tfoot>
-                            
-                                @for (int i = 0; i < Model.Rows.Count; i++)
-                                {
+
+                            @for (int i = 0; i < Model.Rows.Count; i++)
+                            {
                                 <tr>
+                                    <td>@Model.Rows[i][0]</td>
                                     <td>@Model.Rows[i][1]</td>
-                                    <td>@Model.Rows[i][2]</td>
-                                    <td>@Model.Rows[i][3]</td>
-                                    <td>@Model.Rows[i][4]</td>
-                                    <td>@Model.Rows[i][5]</td>
-                                    <td>@Model.Rows[i][6]</td>
-                                    <td>@Model.Rows[i][7]</td>
-                                    <td>@Model.Rows[i][8]</td>
-                                    <td>@Model.Rows[i][9]</td>
-                                    <td>@Model.Rows[i][10]</td>
-                                    <td>@Model.Rows[i][11]</td>
-                                    <td>@Model.Rows[i][12]</td>
-                                   
-                                    
+
+
                                     <td><a href="@Url.Action("Edit", "Student", new {@id=Model.Rows[i][0]})">Edit</a></td>
                                     <td><a href="@Url.Action("Delete", "Student", new { @id = Model.Rows[i][0] })">Delete</a></td>
                                 </tr>
-                                }
-                            
+                            }
+
                         </tfoot>
-                    
+
                     </table>
                 </div>
             </div>
         </div>
-        
+
     </div>
 </div>
 <!-- ============================================================== -->

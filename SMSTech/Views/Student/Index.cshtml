@@ -1,0 +1,168 @@
+﻿@model System.Data.DataTable
+
+@{
+    ViewBag.Title = "StudentDetails";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<!-- Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h4 class="text-themecolor">Datatable</h4>
+    </div>
+    <div class="col-md-7 align-self-center text-right">
+        <div class="d-flex justify-content-end align-items-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item active">Student View</li>
+            </ol>
+            <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Search Now</h4>
+        @using (Html.BeginForm("Index", "Student", FormMethod.Get))
+        {
+        <div class="row">
+            <div class="col-md-6">
+                <label class="m-t-20">Roll #</label>
+                <div class="input-group">
+                    
+                 <input class="form-control" id="single-input" name="ByID" placeholder="Roll #">
+                                            <div class="input-group-append">
+                             <button type="submit" id="check-minutes" class="btn waves-effect waves-light btn-success">Roll #</button>
+
+        </div>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label class="m-t-20">Now time</label>
+                <div class="input-group">
+                    <input class="form-control" id="single-input" value="" placeholder="Now">
+                    <div class="input-group-append">
+                        <button type="button" id="check-minutes" class="btn waves-effect waves-light btn-success">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+            
+                 
+             <div class="row">
+            <div class="col-md-6">
+                <label class="m-t-20">Roll #</label>
+                <div class="input-group">
+                    
+                 
+                    <div class="btn-group col-md-5">
+                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Action
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                            <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                            <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0)">Separated link</a>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+         </div>
+        }
+    </div>
+</div>
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<div class="btn-group">
+    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Action
+    </button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="javascript:void(0)">Action</a>
+        <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+        <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="javascript:void(0)">Separated link</a>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive m-t-40">
+                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>  Section ID </th>
+                                <th>  UserID           </th>
+                                <th>  Roll No           </th>
+                                <th>  Name         </th>
+                                <th>  Starting Date          </th>
+                                <th>  Status       </th>
+                                <th>  Image      </th>
+                                <th>  Birth Date       </th>
+                                <th>  CNIC           </th>
+                                <th>  Faimly ID          </th>
+                                <th>  Gender     </th>
+                                <th>  Joining Class ID       </th>
+                                <th>  Leaving Date       </th>
+                                <th>  Registration No       </th>
+                                <th>  Religion ID     </th>
+                                <th>  Email       </th>
+                                <th>  Student Group ID      </th>
+                                <th>  Edit      </th>
+                                <th>  Delete      </th>
+
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr></tr>
+
+                            @for (int i = 0; i < Model.Rows.Count; i++)
+                            {
+                                <tr>
+                                    <td>@Model.Rows[i][0]</td>
+                                    <td>@Model.Rows[i][1]</td>
+                                    <td>@Model.Rows[i][2]</td>
+                                    <td>@Model.Rows[i][3]</td>
+                                    <td>@Model.Rows[i][4]</td>
+                                    <td>@Model.Rows[i][5]</td>
+                                    <td>@Model.Rows[i][6]</td>
+                                    <td>@Model.Rows[i][7]</td>
+                                    <td>@Model.Rows[i][8]</td>
+                                    <td>@Model.Rows[i][9]</td>
+                                    <td>@Model.Rows[i][10]</td>
+                                    <td>@Model.Rows[i][11]</td>
+                                    <td>@Model.Rows[i][12]</td>
+                                    <td>@Model.Rows[i][13]</td>
+                                    <td>@Model.Rows[i][14]</td>
+                                    <td>@Model.Rows[i][15]</td>
+                                    <td>@Model.Rows[i][16]</td>
+
+
+                                    <td><a href="@Url.Action("Edit", "Student", new {@id=Model.Rows[i][0]})">Edit</a></td>
+                                    <td><a href="@Url.Action("Delete", "Student", new { @id = Model.Rows[i][0] })">Delete</a></td>
+                                </tr>
+                            }
+
+                        </tfoot>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ============================================================== -->
+<!-- End PAge Content -->
