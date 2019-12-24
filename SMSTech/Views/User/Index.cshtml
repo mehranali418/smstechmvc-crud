@@ -52,61 +52,30 @@
                                 
                                 
                                 
-
+                                <th>    ID            </th>
                                 <th>    RoleID             </th>
                                 <th>    Name                   </th>
                                 <th>    Phone                    </th>
                                 <th>    Address               </th>
-                                <th>    Status   </th>
+                                <th>    Status                  </th>
                                 <th>    Username               </th>
                                 <th>    Password             </th>
                                 <th>    RankID                   </th>
                                 <th>    NationalityID                 </th>
                                 <th>    EducationID                     </th>
                                 <th>    ExperienceID             </th>
-                                <th>    ReligionID            ass ID       </th>
-                                <th>    AppointmentDate            te       </th>
-                                <th>    TerminationDate            on No       </th>
-                                <th>    DateOfBirth            D     </th>
+                                <th>    ReligionID             </th>
+                                <th>    AppointmentDate         </th>
+                                <th>    TerminationDate       </th>
+                                <th>    DateOfBirth                </th>
                                 <th>    Phone2              </th>
-                                <th>    Email      </th>
+                                <th>    Email                   </th>
                                 <th>    Comments            </th>
-                                <th>    Edit            </th>
-                                <th>    Delete            </th>
+                                <th>    Actions            </th>
 
                             </tr>
                         </thead>
-                        <tfoot>
-
-                            @for (int i = 0; i < Model.Rows.Count; i++)
-                            {
-                                <tr>
-                                    <td>@Model.Rows[i][0]</td>
-                                    <td>@Model.Rows[i][1]</td>
-                                    <td>@Model.Rows[i][2]</td>
-                                    <td>@Model.Rows[i][3]</td>
-                                    <td>@Model.Rows[i][4]</td>
-                                    <td>@Model.Rows[i][5]</td>
-                                    <td>@Model.Rows[i][6]</td>
-                                    <td>@Model.Rows[i][7]</td>
-                                    <td>@Model.Rows[i][8]</td>
-                                    <td>@Model.Rows[i][9]</td>
-                                    <td>@Model.Rows[i][10]</td>
-                                    <td>@Model.Rows[i][11]</td>
-                                    <td>@Model.Rows[i][12]</td>
-                                    <td>@Model.Rows[i][13]</td>
-                                    <td>@Model.Rows[i][14]</td>
-                                    <td>@Model.Rows[i][15]</td>
-                                    <td>@Model.Rows[i][16]</td>
-                                    <td>@Model.Rows[i][17]</td>
-
-
-                                    <td><a href="@Url.Action("Edit", "Student", new {@id=Model.Rows[i][0]})">Edit</a></td>
-                                    <td><a href="@Url.Action("Delete", "Student", new { @id = Model.Rows[i][0] })">Delete</a></td>
-                                </tr>
-                            }
-
-                        </tfoot>
+                    <tbody id="body"></tbody>
 
                     </table>
                 </div>
@@ -117,3 +86,55 @@
 </div>
 <!-- ============================================================== -->
 <!-- End PAge Content -->
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        debugger
+        GetData()
+    })
+
+    function GetData() {
+        $('#body').empty();
+        $.ajax({
+            url: '/User/GetUsers',
+            Type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (result) {
+                var row = "";
+                $.each(result, function (key, value) {
+                    rows = '<tr>'
+                    + '<td>' + value.ID + '</td>'
+                    + '<td>' + value.RoleID + '</td>'
+                    + '<td>' + value.Name + '</td>'
+                    + '<td>' + value.Phone + '</td>'
+                    + '<td>' + value.Address + '</td>'
+                    + '<td>' + value.Status + '</td>'
+
+                    + '<td>' + value.Username + '</td>'
+                    + '<td>' + value.Password + '</td>'
+                    + '<td>' + value.RankID + '</td>'
+                    + '<td>' + value.NationalityID + '</td>'
+                    + '<td>' + value.EducationID + '</td>'
+                    + '<td>' + value.ExperienceID + '</td>'
+                    + '<td>' + value.ReligionID + '</td>'
+                    + '<td>' + value.AppointmentDate + '</td>'
+                    + '<td>' + value.TerminationDate + '</td>'
+                    + '<td>' + value.DateOfBirth + '</td>'
+                    + '<td>' + value.Phone2 + '</td>'
+                    + '<td>' + value.Email + '</td>'
+                    + '<td>' + value.Comments + '</td>'
+
+
+                    + '<td><input type="button" class="btn btn-primary edit" value="Edit" > <input type="button" class="btn btn-danger delete" value="Delete"></td>'
+                    '</tr>'
+                    $('#body').append(rows);
+                })
+            },
+            error: function (result) {
+            }
+        })
+    }
+
+</script>

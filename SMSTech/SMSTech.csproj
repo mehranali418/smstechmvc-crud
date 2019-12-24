@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -19,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <NuGetPackageImportStamp>a30ba58d</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,11 +41,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -2757,6 +2759,12 @@
     <Content Include="Content\assets\node_modules\x-editable\dist\jqueryui-editable\img\loading.gif" />
     <Content Include="Content\assets\node_modules\x-editable\dist\jqueryui-editable\js\jqueryui-editable.js" />
     <Content Include="Content\assets\node_modules\x-editable\dist\jqueryui-editable\js\jqueryui-editable.min.js" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\changelog.txt" />
     <Content Include="Content\colors\app-calendar.html" />
     <Content Include="Content\colors\app-chat.html" />
@@ -6562,7 +6570,30 @@
     <Content Include="Content\wp-menu\widget-charts.html" />
     <Content Include="Content\wp-menu\widget-data.html" />
     <Content Include="Global.asax" />
+    <EntityDeploy Include="Models\SMSTechModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SMSTechModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\SMSTechModel.edmx.diagram">
+      <DependentUpon>SMSTechModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
     <None Include="obj\Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Models\SMSTechModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SMSTechModel.edmx</DependentUpon>
+      <LastGenOutput>SMSTechModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\SMSTechModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SMSTechModel.edmx</DependentUpon>
+      <LastGenOutput>SMSTechModel.cs</LastGenOutput>
+    </Content>
     <Content Include="obj\Scripts\jquery-1.10.2.js" />
     <Content Include="obj\Scripts\jquery-1.10.2.min.js" />
     <None Include="obj\Scripts\jquery.validate-vsdoc.js" />
@@ -6570,6 +6601,103 @@
     <Content Include="obj\Scripts\jquery.validate.min.js" />
     <Content Include="obj\Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="obj\Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\index.d.ts" />
+    <Content Include="Scripts\index.js.flow" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\src\index.js" />
+    <Content Include="Scripts\src\methods\defaults.js" />
+    <Content Include="Scripts\src\methods\destroy.js" />
+    <Content Include="Scripts\src\methods\disableEventListeners.js" />
+    <Content Include="Scripts\src\methods\enableEventListeners.js" />
+    <Content Include="Scripts\src\methods\placements.js" />
+    <Content Include="Scripts\src\methods\update.js" />
+    <Content Include="Scripts\src\modifiers\applyStyle.js" />
+    <Content Include="Scripts\src\modifiers\arrow.js" />
+    <Content Include="Scripts\src\modifiers\computeStyle.js" />
+    <Content Include="Scripts\src\modifiers\flip.js" />
+    <Content Include="Scripts\src\modifiers\hide.js" />
+    <Content Include="Scripts\src\modifiers\index.js" />
+    <Content Include="Scripts\src\modifiers\inner.js" />
+    <Content Include="Scripts\src\modifiers\keepTogether.js" />
+    <Content Include="Scripts\src\modifiers\offset.js" />
+    <Content Include="Scripts\src\modifiers\preventOverflow.js" />
+    <Content Include="Scripts\src\modifiers\shift.js" />
+    <Content Include="Scripts\src\utils\clockwise.js" />
+    <Content Include="Scripts\src\utils\computeAutoPlacement.js" />
+    <Content Include="Scripts\src\utils\debounce.js" />
+    <Content Include="Scripts\src\utils\find.js" />
+    <Content Include="Scripts\src\utils\findCommonOffsetParent.js" />
+    <Content Include="Scripts\src\utils\findIndex.js" />
+    <Content Include="Scripts\src\utils\getBordersSize.js" />
+    <Content Include="Scripts\src\utils\getBoundaries.js" />
+    <Content Include="Scripts\src\utils\getBoundingClientRect.js" />
+    <Content Include="Scripts\src\utils\getClientRect.js" />
+    <Content Include="Scripts\src\utils\getFixedPositionOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetRect.js" />
+    <Content Include="Scripts\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getOppositePlacement.js" />
+    <Content Include="Scripts\src\utils\getOppositeVariation.js" />
+    <Content Include="Scripts\src\utils\getOuterSizes.js" />
+    <Content Include="Scripts\src\utils\getParentNode.js" />
+    <Content Include="Scripts\src\utils\getPopperOffsets.js" />
+    <Content Include="Scripts\src\utils\getReferenceNode.js" />
+    <Content Include="Scripts\src\utils\getReferenceOffsets.js" />
+    <Content Include="Scripts\src\utils\getRoot.js" />
+    <Content Include="Scripts\src\utils\getRoundedOffsets.js" />
+    <Content Include="Scripts\src\utils\getScroll.js" />
+    <Content Include="Scripts\src\utils\getScrollParent.js" />
+    <Content Include="Scripts\src\utils\getStyleComputedProperty.js" />
+    <Content Include="Scripts\src\utils\getSupportedPropertyName.js" />
+    <Content Include="Scripts\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getWindow.js" />
+    <Content Include="Scripts\src\utils\getWindowSizes.js" />
+    <Content Include="Scripts\src\utils\includeScroll.js" />
+    <Content Include="Scripts\src\utils\index.js" />
+    <Content Include="Scripts\src\utils\isBrowser.js" />
+    <Content Include="Scripts\src\utils\isFixed.js" />
+    <Content Include="Scripts\src\utils\isFunction.js" />
+    <Content Include="Scripts\src\utils\isIE.js" />
+    <Content Include="Scripts\src\utils\isModifierEnabled.js" />
+    <Content Include="Scripts\src\utils\isModifierRequired.js" />
+    <Content Include="Scripts\src\utils\isNumeric.js" />
+    <Content Include="Scripts\src\utils\isOffsetContainer.js" />
+    <Content Include="Scripts\src\utils\removeEventListeners.js" />
+    <Content Include="Scripts\src\utils\runModifiers.js" />
+    <Content Include="Scripts\src\utils\setAttributes.js" />
+    <Content Include="Scripts\src\utils\setStyles.js" />
+    <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Web.config" />
     <Content Include="obj\Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -6603,26 +6731,300 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Classes.cs" />
-    <Compile Include="Models\classLevels.cs" />
-    <Compile Include="Models\Closings.cs" />
-    <Compile Include="Models\Educations.cs" />
-    <Compile Include="Models\Electricity.cs" />
-    <Compile Include="Models\ExamTests.cs" />
-    <Compile Include="Models\Gas.cs" />
-    <Compile Include="Models\ParentDetail.cs" />
-    <Compile Include="Models\Rank.cs" />
-    <Compile Include="Models\Religions.cs" />
-    <Compile Include="Models\Roles.cs" />
-    <Compile Include="Models\Section.cs" />
-    <Compile Include="Models\Student.cs" />
-    <Compile Include="Models\StudentGroups.cs" />
-    <Compile Include="Models\StudentGuardians.cs" />
-    <Compile Include="Models\StudentRelations.cs" />
-    <Compile Include="Models\telecharges.cs" />
-    <Compile Include="Models\TransportCharges.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="Models\Watercharges.cs" />
+    <Compile Include="Models\Academic_ClassRoutine.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Academic_ClassRoutine_Days.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Academic_ClassSubjects.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Academic_Courses.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Academic_CourseStudents.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Academic_Days.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Academic_Holydays.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Academic_Periods.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Academic_Subjects.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AllowanceAmount.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AllowanceType.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssessmentArea.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssessmentCategory.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssessmentColor.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssessmentFindingDetail.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssessmentFindingMaster.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Capabilities_Advance.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Capability.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Class.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClassLevel.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Commitment.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Document_files.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Document_names.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmployeeAttendance.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmployeeLoan.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmployeeLoans_History.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmployeePayment.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmployeePayments_History.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmployeePenalty.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmployeeRefundableType.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmployeeSecurityInstallment.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmployeeSecurityWithDraw.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Exam.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Exams_ClassSubjects.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Exams_DateSheet.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Exams_DateSheet_Detail.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Exams_DateSheet_Names.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Exams_GeneralRemarks.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Exams_Grade.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Exams_GroupCollections.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Exams_Groups.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Exams_Marks.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Exams_Tests.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ExpenseAmount.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ExpenseAmount_History.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ExpenseCategory.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ExpenseHead.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Experience.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FeeAssignment.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FeeChallan.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FeeChallanDetail.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FeeReceipt.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FeeReceiptDetail.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FeeRecurring.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FeeType.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FingerPrint.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Labels_Internal.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Labels_Navigation.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Message.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Nationality.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Notification.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Occupation.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PersonalizedFee.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rank.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Religion.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Role.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SalaryIncrement.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SalaryMonth.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SalaryReceipt.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SalaryReceiptDetail.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SchoolSetting.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Section.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SecurityFee.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMSTechModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SMSTechModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMSTechModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMSTechModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SMSTechModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMS_Networks.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMS_Queue.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMS_Templates.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMS_Triggers.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StartsFrom0AfterEachBilling.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Student.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentPayment.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentPaymentsMeta.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentPayments_History.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentsMeta.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Students_temp.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Student_Attendance.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Student_Family.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Student_Groups.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Student_Guardians.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Student_Guardian_Relation.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Student_Relations.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_RegisterStudent.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>SMSTechModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -9402,24 +9804,21 @@
     <Content Include="Views\Watercharges\WaterCharges.cshtml" />
     <Content Include="Views\telecharges\telecharges.cshtml" />
     <Content Include="Views\Section\Index.cshtml" />
-    <Content Include="Views\Religions\Index.cshtml" />
+    <Content Include="Views\Religion\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Classes\Index.cshtml" />
     <Content Include="Views\Educations\Index.cshtml" />
-    <Content Include="Views\ExamTests\Index.cshtml" />
     <Content Include="Views\StudentRelations\Index.cshtml" />
     <Content Include="Views\StudentGuardians\Index.cshtml" />
     <Content Include="Views\ClassLevels\Index.cshtml" />
     <Content Include="Views\Rank\Index.cshtml" />
-    <Content Include="Views\StudentGroups\StudentGroupsView.cshtml" />
     <Content Include="Views\Classes\AddClasses.cshtml" />
     <Content Include="Views\ClassLevels\AddClassLevel.cshtml" />
     <Content Include="Views\Educations\AddEducation.cshtml" />
     <Content Include="Views\Electricity\create.cshtml" />
-    <Content Include="Views\ExamTests\AddExam.cshtml" />
     <Content Include="Views\Rank\AddRanks.cshtml" />
-    <Content Include="Views\Religions\AddReligions.cshtml" />
+    <Content Include="Views\Religion\AddReligions.cshtml" />
     <Content Include="Views\Gas\create.cshtml" />
     <Content Include="Views\Role\AddRoles.cshtml" />
     <Content Include="Views\StudentGuardians\AddStudentGuardians.cshtml" />
@@ -9429,6 +9828,20 @@
     <Content Include="Views\Student\AddStudent.cshtml" />
     <Content Include="Views\Section\AddSection.cshtml" />
     <Content Include="Views\User\AddUser.cshtml" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.js.flow" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Views\ExamTest\Index.cshtml" />
+    <Content Include="Views\StudentGroups\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -9468,6 +9881,14 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

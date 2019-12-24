@@ -54,6 +54,6 @@ F:\SMSTECHFrontEnd\SMSTech\bin\System.Web.Razor.xml
 F:\SMSTECHFrontEnd\SMSTech\bin\System.Web.WebPages.xml
 F:\SMSTECHFrontEnd\SMSTech\bin\System.Web.WebPages.Deployment.xml
 F:\SMSTECHFrontEnd\SMSTech\bin\System.Web.WebPages.Razor.xml
+F:\SMSTECHFrontEnd\SMSTech\obj\Debug\SMSTech.csprojResolveAssemblyReference.cache
 F:\SMSTECHFrontEnd\SMSTech\obj\Debug\SMSTech.dll
 F:\SMSTECHFrontEnd\SMSTech\obj\Debug\SMSTech.pdb
-F:\SMSTECHFrontEnd\SMSTech\obj\Debug\SMSTech.csprojResolveAssemblyReference.cache

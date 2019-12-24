@@ -35,28 +35,16 @@
                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
+                                <th>  ID </th>
                                 <th>  Section Name </th>
                                 <th>  Class ID          </th>
-                               <th>Edit</th>
-                                <th>Delete</th>
+                               <th>Actions</th>
+                                
 
                             </tr>
                         </thead>
-                        <tfoot>
+                        <tbody id="body"></tbody>
 
-                            @for (int i = 0; i < Model.Rows.Count; i++)
-                            {
-                                <tr>
-                                    <td>@Model.Rows[i][0]</td>
-                                    <td>@Model.Rows[i][1]</td>
-                                   
-
-                                    <td><a href="@Url.Action("Edit", "Student", new {@id=Model.Rows[i][0]})">Edit</a></td>
-                                    <td><a href="@Url.Action("Delete", "Student", new { @id = Model.Rows[i][0] })">Delete</a></td>
-                                </tr>
-                            }
-
-                        </tfoot>
 
                     </table>
                 </div>
@@ -68,3 +56,85 @@
 <!-- ============================================================== -->
 <!-- End PAge Content -->
 
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        debugger
+        GetData()
+    })
+
+    function GetData() {
+        $('#body').empty();
+        $.ajax({
+            url: '/Section/GetSections',
+            Type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (result) {
+                var row = "";
+                $.each(result, function (key, value) {
+                    rows = '<tr>'
+                    + '<td>' + value.ID + '</td>'
+                    + '<td>' + value.Name + '</td>'
+                    + '<td>' + value.ClassID + '</td>'
+                   
+                    + '<td><input type="button" class="btn btn-primary edit" value="Edit" > <input type="button" class="btn btn-danger delete" value="Delete"></td>'
+                    '</tr>'
+                    $('#body').append(rows);
+                })
+            },
+            error: function (result) {
+            }
+        })
+    }
+
+</script>
+
+
+
+@*<script>
+    $(document).ready(function () {
+        debugger
+        GetData()
+    })
+
+    function GetData() {
+        $('#body').empty();
+        $.ajax({
+            url: '/Student/GetStudents',
+            Type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (result) {
+                var row = "";
+                $.each(result, function (key, value) {
+                    rows = '<tr>'
+                    + '<td>' + value.SectionID + '</td>'
+                    + '<td>' + value.UserID + '</td>'
+                    + '<td>' + value.RollNo + '</td>'
+                    + '<td>' + value.Name + '</td>'
+                    + '<td>' + value.sDate + '</td>'
+                    + '<td>' + value.Status + '</td>'
+                    + '<td>' + value.image + '</td>'
+                    + '<td>' + value.BirthDate + '</td>'
+                    + '<td>' + value.StuCNIC + '</td>'
+                    + '<td>' + value.FamilyID + '</td>'
+                    + '<td>' + value.Gender + '</td>'
+                    + '<td>' + value.ClassID + '</td>'
+                    + '<td>' + value.LeavingDate + '</td>'
+                    + '<td>' + value.registration_no + '</td>'
+                    + '<td>' + value.NationalityID + '</td>'
+                    + '<td>' + value.ReligionID + '</td>'
+                    + '<td>' + value.Email + '</td>'
+                    + '<td>' + value.StuGroupID + '</td>'
+                    + '<td><input type="button" class="btn btn-primary edit" value="Edit" > <input type="button" class="btn btn-danger delete" value="Delete"></td>'
+                    '</tr>'
+                    $('#body').append(rows);
+                })
+            },
+            error: function (result) {
+            }
+        })
+    }
+
+</script>*@

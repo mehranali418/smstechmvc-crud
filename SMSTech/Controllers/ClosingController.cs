@@ -19,21 +19,22 @@ namespace SMSTech.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult create(Closings c)
-        {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("https://black-frog-6.localtunnel.me/");
-            //var response = client.PostAsJsonAsync("closing/AddClosing", c).Result;
-            //if (response.IsSuccessStatusCode)
-            //{
-            //    Console.Write("Success");
-            //}
-            //else
-            //{
-            //    Console.Write("Error");
-            //}
-            return View(c);
-        }
+        //[HttpPost]
+        //public ActionResult create(c c)
+        //{
+        //    HttpClient client = new HttpClient();
+        //    client.BaseAddress = new Uri("https://black-frog-6.localtunnel.me/");
+        //    //var response = client.PostAsJsonAsync("closing/AddClosing", c).Result;
+        //    //if (response.IsSuccessStatusCode)
+        //    //{
+        //    //    Console.Write("Success");
+        //    //}
+        //    //else
+        //    //{
+        //    //    Console.Write("Error");
+        //    //}
+        //    return View(c);
+        //}
+        //}
     }
 }

@@ -13,42 +13,22 @@ namespace SMSTech.Controllers
 {
     public class StudentRelationsController : Controller
     {
+        SMST4MEntities1 db = new SMST4MEntities1();
         //
         // GET: /StudentRelations/
-        StudentRelations SRelation = new StudentRelations();
+        Student_Relations SRelation = new Student_Relations();
 
         public ActionResult Index()
         {
-            DataTable dt = new DataTable();
-
-            using (WebClient webClient = new System.Net.WebClient())
-            {
-                var url = "http://192.168.0.119:3000/studentRelation";
-                var json = webClient.DownloadString(url);
-                JArray jsonArray = JArray.Parse(json);
-                int lenght = jsonArray.Count;
-                dynamic data;
-                
-
-                dt.Columns.Add("Name");
-
-                for (int i = 0; i < lenght; i++)
-                {
-                    data = JObject.Parse(jsonArray[i].ToString());
-
-                    SRelation.name = data.Name;
-
-
-                    dt.Rows.Add();
-                    dt.Rows[i]["Name"] = SRelation.name;
-
-
-                }
-            }
-            return View(dt);
+            return View();
         }
 
-
+        public JsonResult Action()
+        {
+            var StdRelations = db.Student_Guardian_Relation.ToList();
+            return Json(StdRelations,JsonRequestBehavior.AllowGet);
+        }
+        
         public ActionResult AddRelations()
         {
             return View();
@@ -56,7 +36,7 @@ namespace SMSTech.Controllers
 
 
         [HttpPost]
-        public ActionResult AddRelations(StudentRelations SRelation)
+        public ActionResult AddRelations(Student_Relations SRelation)
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://192.168.0.119:3000/");

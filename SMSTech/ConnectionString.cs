@@ -7,6 +7,6 @@ namespace SMSTech
 {
     public class ConnectionString
     {
-        public static string Path = @"Data Source=.\SQLEXPRESS;Initial Catalog=dbSMSTech;Integrated Security=True";
+        public static string Path = @"Data Source=.\SQLEXPRESS;Initial Catalog=SMST4M;Integrated Security=True";
     }
 }

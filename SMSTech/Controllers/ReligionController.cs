@@ -13,48 +13,28 @@ namespace SMSTech.Controllers
 {
     public class ReligionController : Controller
     {
-        Religions Rel = new Religions();
+        SMST4MEntities1 db = new SMST4MEntities1();
 
         //
         // GET: /Religions/
         public ActionResult Index()
         {
-
-            DataTable dt = new DataTable();
-
-            using (WebClient webClient = new System.Net.WebClient())
-            {
-                var url = "http://192.168.0.119:3000/Religion";
-                var json = webClient.DownloadString(url);
-                JArray jsonArray = JArray.Parse(json);
-                int lenght = jsonArray.Count;
-                dynamic data;
-                
-                dt.Columns.Add("Name");
-
-
-                for (int i = 0; i < lenght; i++)
-                {
-                    data = JObject.Parse(jsonArray[i].ToString());
-
-                    Rel.name = data.Name;
-
-
-                    dt.Rows.Add();
-                    dt.Rows[i]["Name"] = Rel.name;
-
-                }
-            }
-            return View(dt);
+            return View();
         }
 
+
+        public JsonResult GetReligion()
+        {
+            var Religion = db.Religions.ToList();
+            return Json(Religion, JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult AddReligions()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult AddReligions(Religions Rel)
+        public ActionResult AddReligions(Religion Rel)
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://192.168.0.119:3000/");

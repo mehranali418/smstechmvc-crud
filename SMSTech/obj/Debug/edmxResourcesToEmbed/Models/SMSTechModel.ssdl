@@ -1,0 +1,1242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SMST4MModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Academic_ClassRoutine">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubjectID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="SectionID" Type="int" />
+    <Property Name="PeriodID" Type="int" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="Academic_ClassRoutine_Days">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClassRoutineID" Type="int" />
+    <Property Name="DaysID" Type="int" />
+  </EntityType>
+  <EntityType Name="Academic_ClassSubjects">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubjectID" Type="int" />
+    <Property Name="SectionID" Type="int" />
+    <Property Name="SubjectNumber" Type="int" />
+    <Property Name="TotalMarks" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="PassingMarks" Type="decimal" Precision="18" Scale="1" />
+  </EntityType>
+  <EntityType Name="Academic_Courses">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Duration" Type="tinyint" />
+    <Property Name="StandardFee" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Operator_id" Type="int" />
+    <Property Name="Is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="Academic_CourseStudents">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Student_id" Type="int" />
+    <Property Name="Course_id" Type="int" />
+    <Property Name="DecidedFee" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="StartDate" Type="smalldatetime" />
+    <Property Name="Duration" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="Academic_Days">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="Holyday" Type="bit" />
+    <Property Name="DayNumber" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="Academic_Holydays">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="S_Date" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="Academic_Periods">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="TimeStart" Type="time" Precision="7" />
+    <Property Name="TimeEnd" Type="time" Precision="7" />
+    <Property Name="PeriodNumber" Type="int" />
+  </EntityType>
+  <EntityType Name="Academic_Subjects">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="300" />
+    <Property Name="ShortName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="AllowanceAmounts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="AllowanceTypeID" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SalaryMonthID" Type="int" />
+    <Property Name="AllowanceAmountID" Type="int" />
+  </EntityType>
+  <EntityType Name="AllowanceTypes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="Recurring" Type="int" />
+    <Property Name="AllowanceType" Type="varchar" MaxLength="50" />
+    <Property Name="SequenceNumber" Type="int" />
+  </EntityType>
+  <EntityType Name="AssessmentAreas">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssessmentCategoryID" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="Description" Type="varchar" MaxLength="300" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="Sequence" Type="int" />
+    <Property Name="Is_Active" Type="bit" />
+    <Property Name="Is_SummaryField" Type="bit" />
+    <Property Name="Level" Type="int" />
+  </EntityType>
+  <EntityType Name="AssessmentCategories">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="Detail" Type="text" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="AssessmentColors">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ColorName" Type="varchar" MaxLength="50" />
+    <Property Name="ColorCode" Type="varchar" MaxLength="50" />
+    <Property Name="ColorMeaning" Type="varchar" MaxLength="200" />
+    <Property Name="Is_Active" Type="bit" />
+  </EntityType>
+  <EntityType Name="AssessmentFindingDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssessmentFindingMasterID" Type="int" />
+    <Property Name="AssessmentAreaID" Type="int" />
+    <Property Name="Finding" Type="text" />
+  </EntityType>
+  <EntityType Name="AssessmentFindingMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="AssessmentCategoryID" Type="int" />
+    <Property Name="AssessmentColorID" Type="int" />
+    <Property Name="OperatorID" Type="int" />
+    <Property Name="CreationDate" Type="smalldatetime" />
+    <Property Name="LastUpdatedOn" Type="smalldatetime" />
+    <Property Name="LastUpdatedBy" Type="int" />
+    <Property Name="Editable" Type="bit" />
+  </EntityType>
+  <EntityType Name="Capabilities">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleID" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="Allowed" Type="bit" />
+    <Property Name="isRoot" Type="bit" />
+  </EntityType>
+  <EntityType Name="Capabilities_Advance">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdvanceCapabilityID" Type="int" />
+    <Property Name="RoleID" Type="int" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'SMST4M.dbo.CapabilitiesDefault' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="CapabilitiesDefault">
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="isRoot" Type="bit" />
+          <Property Name="SysNames" Type="varchar" MaxLength="200" />
+          <Property Name="ItemText" Type="varchar" MaxLength="100" />
+        </EntityType>-->
+  <EntityType Name="Classes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClassNumber" Type="int" />
+    <Property Name="Level_id" Type="int" />
+  </EntityType>
+  <EntityType Name="ClassLevels">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="LevelNumber" Type="int" />
+  </EntityType>
+  <EntityType Name="Commitments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="sDate" Type="smalldatetime" />
+    <Property Name="Details" Type="text" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'SMST4M.dbo.Countries_list' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Countries_list">
+          <Property Name="CountryID" Type="int" />
+          <Property Name="CountryName" Type="varchar" MaxLength="50" />
+          <Property Name="TwoCharCountryCode" Type="char" MaxLength="2" />
+          <Property Name="ThreeCharCountryCode" Type="char" MaxLength="3" />
+        </EntityType>-->
+  <EntityType Name="Document_files">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DocNameID" Type="int" />
+    <Property Name="FileName" Type="varchar" MaxLength="1000" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="UserID" Type="int" />
+  </EntityType>
+  <EntityType Name="Document_names">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="DocType" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="Educations">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="EmployeeAttendance">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="sDate" Type="smalldatetime" />
+    <Property Name="Type" Type="tinyint" />
+    <Property Name="OperatorID" Type="int" />
+    <Property Name="UpdateDate" Type="smalldatetime" />
+    <Property Name="Remarks" Type="varchar" MaxLength="500" />
+    <Property Name="Status" Type="tinyint" />
+    <Property Name="Present" Type="bit" />
+    <Property Name="Absent" Type="bit" />
+    <Property Name="Leave" Type="bit" />
+    <Property Name="Offday" Type="bit" />
+  </EntityType>
+  <EntityType Name="EmployeeLoans">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" />
+    <Property Name="OperatorID" Type="int" />
+    <Property Name="AllowanceName" Type="varchar" MaxLength="200" />
+    <Property Name="ReceivedLoan" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ReturnedLoan" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="T_Date" Type="smalldatetime" />
+    <Property Name="Remarks" Type="varchar" MaxLength="1000" />
+    <Property Name="SalaryMonthID" Type="int" />
+    <Property Name="ChequeNo" Type="varchar" MaxLength="100" />
+    <Property Name="Processesd" Type="bit" />
+    <Property Name="PaymentMethod" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="EmployeeLoans_History">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Action" Type="varchar" MaxLength="50" />
+    <Property Name="ActionDate" Type="smalldatetime" />
+    <Property Name="ActionUserID" Type="int" />
+    <Property Name="EmployeeID" Type="int" />
+    <Property Name="OperatorID" Type="int" />
+    <Property Name="EmployeeLoansID" Type="int" />
+    <Property Name="AllowanceName" Type="varchar" MaxLength="200" />
+    <Property Name="ReceivedLoanFrom" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ReceivedLoanTo" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ReturnedLoanFrom" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ReturnedLoanTo" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="T_Date" Type="smalldatetime" />
+    <Property Name="Remarks" Type="varchar" MaxLength="1000" />
+    <Property Name="SalaryMonthID" Type="int" />
+    <Property Name="ChequeNo" Type="varchar" MaxLength="100" />
+    <Property Name="Processesd" Type="bit" />
+    <Property Name="PaymentMethod" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="EmployeePayments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" />
+    <Property Name="OperatorID" Type="int" />
+    <Property Name="AllowanceAmountID" Type="int" />
+    <Property Name="AllowanceName" Type="varchar" MaxLength="200" />
+    <Property Name="Dues" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Received" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="T_Date" Type="smalldatetime" />
+    <Property Name="Status" Type="tinyint" />
+    <Property Name="Remarks" Type="varchar" MaxLength="1000" />
+    <Property Name="SalaryMonthID" Type="int" />
+    <Property Name="T_Type" Type="int" />
+    <Property Name="ChequeNo" Type="varchar" MaxLength="100" />
+    <Property Name="PenalityID" Type="int" />
+    <Property Name="Processesd" Type="bit" />
+    <Property Name="PaymentMethod" Type="tinyint" />
+    <Property Name="EmployeeSecurityInstallmentID" Type="int" />
+  </EntityType>
+  <EntityType Name="EmployeePayments_History">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Action" Type="varchar" MaxLength="50" />
+    <Property Name="ActionDate" Type="smalldatetime" />
+    <Property Name="ActionUserID" Type="int" />
+    <Property Name="EmployeePaymentsID" Type="int" />
+    <Property Name="EmployeeID" Type="int" />
+    <Property Name="OperatorID" Type="int" />
+    <Property Name="AllowanceAmountID" Type="int" />
+    <Property Name="AllowanceName" Type="varchar" MaxLength="200" />
+    <Property Name="DuesFrom" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DuesTo" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ReceivedFrom" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ReceivedTo" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="T_Date" Type="smalldatetime" />
+    <Property Name="Status" Type="tinyint" />
+    <Property Name="Remarks" Type="varchar" MaxLength="1000" />
+    <Property Name="SalaryMonthID" Type="int" />
+    <Property Name="T_Type" Type="int" />
+    <Property Name="ChequeNo" Type="varchar" MaxLength="100" />
+    <Property Name="PenalityID" Type="int" />
+    <Property Name="Processesd" Type="bit" />
+  </EntityType>
+  <EntityType Name="EmployeePenalties">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="Detail" Type="text" />
+  </EntityType>
+  <EntityType Name="EmployeeRefundableTypes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="Detail" Type="text" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="EmployeeSecurityInstallments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="OperatorID" Type="int" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DepositType" Type="int" />
+    <Property Name="CurrentDate" Type="smalldatetime" />
+    <Property Name="Remarks" Type="text" />
+    <Property Name="EmployeePaymentID" Type="int" />
+    <Property Name="SalaryMonthID" Type="int" />
+    <Property Name="RefundableTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="EmployeeSecurityWithDraws">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="SecurityWithdrawnByUser" Type="bit" />
+    <Property Name="CurrentDate" Type="smalldatetime" />
+    <Property Name="WithDrawOperatorID" Type="int" />
+    <Property Name="WithDrawAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Remarks" Type="text" />
+    <Property Name="SalaryMonthID" Type="int" />
+    <Property Name="RefundableTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="Exams">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TestID" Type="int" />
+    <Property Name="ExamDate" Type="smalldatetime" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="ShortName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Exams_ClassSubjects">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TestID" Type="int" />
+    <Property Name="SubjectID" Type="int" />
+    <Property Name="SectionID" Type="int" />
+    <Property Name="SubjectNumber" Type="int" />
+    <Property Name="TotalMarks" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="PassingMarks" Type="decimal" Precision="18" Scale="1" />
+  </EntityType>
+  <EntityType Name="Exams_DateSheet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateSheetName_id" Type="int" />
+    <Property Name="Section_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Exams_DateSheet_Detail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateSheet_id" Type="int" />
+    <Property Name="ExamClassSubject_id" Type="int" />
+    <Property Name="Paper_date" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="Exams_DateSheet_Names">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Exam_id" Type="int" />
+    <Property Name="Start_time" Type="time" Precision="7" />
+  </EntityType>
+  <EntityType Name="Exams_GeneralRemarks">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExamID" Type="int" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="GeneralRemarks" Type="varchar" MaxLength="1000" />
+    <Property Name="Position" Type="int" />
+    <Property Name="PositionInClass" Type="int" />
+  </EntityType>
+  <EntityType Name="Exams_Grade">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Percentage_from" Type="int" />
+    <Property Name="Percentage_to" Type="int" />
+    <Property Name="Grade_letters" Type="varchar" MaxLength="5" />
+    <Property Name="Level_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Exams_GroupCollections">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Group_id" Type="int" />
+    <Property Name="Exam_id" Type="int" />
+    <Property Name="Percentage" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="SequenceNumber" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Exams_Groups">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="Exams_Marks">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExamID" Type="int" />
+    <Property Name="ExamClassSubject_id" Type="int" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="ObtainMarksA" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ObtainMarksB" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ObtainMarksPractical" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Remarks" Type="varchar" MaxLength="200" />
+    <Property Name="PassFail" Type="bit" />
+    <Property Name="ExcludeSubject" Type="bit" />
+  </EntityType>
+  <EntityType Name="Exams_Tests">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="Detail" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="ExpenseAmount_History">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Action" Type="varchar" MaxLength="50" />
+    <Property Name="ActionDate" Type="smalldatetime" />
+    <Property Name="ActionUserID" Type="int" />
+    <Property Name="ExpenseAmountID" Type="int" />
+    <Property Name="AmountFrom" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="AmountTo" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ExpenseHeadID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="T_Date" Type="smalldatetime" />
+    <Property Name="SalaryMonthID" Type="int" />
+    <Property Name="Remarks" Type="text" />
+    <Property Name="ExpenseTitle" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ExpenseAmounts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExpenseHeadID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="T_Date" Type="smalldatetime" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SalaryMonthID" Type="int" />
+    <Property Name="Remarks" Type="text" />
+    <Property Name="ExpenseTitle" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ExpenseCategories">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ExpenseHeads">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="ExpenseCategoryID" Type="int" />
+  </EntityType>
+  <EntityType Name="Experiences">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="FeeAssignments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FeeChallanID" Type="int" />
+    <Property Name="FeeFrequency" Type="varchar" MaxLength="50" />
+    <Property Name="sDate" Type="smalldatetime" />
+    <Property Name="FeeTypes" Type="varchar" MaxLength="5000" />
+    <Property Name="Classes" Type="varchar" MaxLength="5000" />
+  </EntityType>
+  <EntityType Name="FeeChallan">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IssueDate" Type="smalldatetime" />
+    <Property Name="ValidDate" Type="smalldatetime" />
+    <Property Name="DateFrom" Type="smalldatetime" />
+    <Property Name="DateTo" Type="smalldatetime" />
+    <Property Name="sDate" Type="smalldatetime" />
+    <Property Name="DueDate" Type="smalldatetime" />
+    <Property Name="FeeFrequencyMonths" Type="int" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="UserID" Type="int" />
+  </EntityType>
+  <EntityType Name="FeeChallanDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FeeChallanID" Type="int" />
+    <Property Name="StudentID" Type="int" />
+  </EntityType>
+  <EntityType Name="FeeReceiptDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FeeReceiptID" Type="int" />
+    <Property Name="FeeName" Type="varchar" MaxLength="100" />
+    <Property Name="Dues" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="FeeReceipts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentPaymentID" Type="int" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="SubTotal" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TotalPayable" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="FeeMonth" Type="varchar" MaxLength="50" />
+    <Property Name="Arrears" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ChallanNo" Type="int" />
+    <Property Name="ReceivedAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="T_Date" Type="smalldatetime" />
+    <Property Name="PaidType" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="FeeRecurring">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Months" Type="int" />
+    <Property Name="FeeType" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="FeeTypes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Amount" Type="int" />
+    <Property Name="LateFeeFine" Type="int" />
+    <Property Name="RecurringID" Type="varchar" MaxLength="50" />
+    <Property Name="ClassID" Type="int" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="FingerPrints">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccountType" Type="tinyint" />
+    <Property Name="Status" Type="tinyint" />
+    <Property Name="FingerPrint" Type="varchar(max)" />
+    <Property Name="AccountID" Type="int" />
+  </EntityType>
+  <EntityType Name="Labels_Internal">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Default_Singular" Type="varchar" MaxLength="50" />
+    <Property Name="Default_Plural" Type="varchar" MaxLength="50" />
+    <Property Name="Custom_Singular" Type="nvarchar" MaxLength="50" />
+    <Property Name="Custom_Plural" Type="nvarchar" MaxLength="50" />
+    <Property Name="UseDefault" Type="bit" />
+    <Property Name="Description" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="Labels_Navigation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DefaultLabel" Type="nvarchar" MaxLength="50" />
+    <Property Name="PageHeading" Type="nvarchar" MaxLength="100" />
+    <Property Name="Navigation" Type="nvarchar" MaxLength="100" />
+    <Property Name="UseDefault" Type="bit" />
+    <Property Name="SysNames" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Messages">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="200" />
+    <Property Name="SenderID" Type="int" />
+    <Property Name="RecipientID" Type="int" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="Nationalities">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Notifications">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WebID" Type="int" />
+    <Property Name="Message" Type="text" />
+  </EntityType>
+  <EntityType Name="Occupations">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="PersonalizedFee">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FeeTypeID" Type="int" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="Amount" Type="int" />
+  </EntityType>
+  <EntityType Name="Ranks">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Religions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Type" Type="bit" />
+  </EntityType>
+  <EntityType Name="SalaryIncrements">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="sDate" Type="smalldatetime" />
+    <Property Name="IncrementAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OldAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="NewAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OperatorID" Type="int" />
+    <Property Name="AllowanceName" Type="varchar" MaxLength="100" />
+    <Property Name="GrossSalary" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SalaryMonthID" Type="int" />
+    <Property Name="AllowanceAmountID" Type="int" />
+  </EntityType>
+  <EntityType Name="SalaryMonth">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateFrom" Type="smalldatetime" />
+    <Property Name="DateTo" Type="smalldatetime" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="UpdatedOn" Type="smalldatetime" />
+    <Property Name="UpdatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="SalaryReceiptDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SalaryReceiptID" Type="int" />
+    <Property Name="AllowanceName" Type="varchar" MaxLength="100" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OperatorID" Type="int" />
+    <Property Name="EmployeePaymentID" Type="int" />
+    <Property Name="EmployeeLoanID" Type="int" />
+    <Property Name="T_Type" Type="tinyint" />
+    <Property Name="T_Date" Type="smalldatetime" />
+    <Property Name="OrderNumber" Type="int" />
+  </EntityType>
+  <EntityType Name="SalaryReceipts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" />
+    <Property Name="GrossSalary" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Balance" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SalaryMonthID" Type="int" />
+    <Property Name="TotalReceived" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TotalReceivable" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ReceivedAsSalary" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="SchoolSettings">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SettingName" Type="varchar" MaxLength="200" />
+    <Property Name="SettingValue" Type="varchar" MaxLength="8000" />
+    <Property Name="Example" Type="varchar" MaxLength="500" />
+    <Property Name="DataType" Type="varchar" MaxLength="50" />
+    <Property Name="Images" Type="varbinary(max)" />
+    <Property Name="Category" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Sections">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClassID" Type="int" />
+  </EntityType>
+  <EntityType Name="SecurityFee">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="SecurityWithdrawnByStudent" Type="bit" />
+    <Property Name="SecurityWithdrawDate" Type="smalldatetime" />
+    <Property Name="WithdrawByUserID" Type="int" />
+    <Property Name="PersonalizedFeeID" Type="int" />
+  </EntityType>
+  <EntityType Name="SMS_Networks">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MobileNetwork" Type="varchar" MaxLength="100" />
+    <Property Name="SimNo" Type="varchar" MaxLength="50" />
+    <Property Name="PerMinutesSMS" Type="int" />
+    <Property Name="PerDaySMS" Type="int" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="Priority" Type="tinyint" />
+    <Property Name="ComPort" Type="varchar" MaxLength="50" />
+    <Property Name="BaudRate" Type="bigint" />
+    <Property Name="DataBits" Type="int" />
+    <Property Name="StopBits" Type="varchar" MaxLength="50" />
+    <Property Name="ParityBits" Type="varchar" MaxLength="50" />
+    <Property Name="WriteTimeout" Type="int" />
+    <Property Name="ReadTimeout" Type="int" />
+    <Property Name="PerSmsDelay" Type="bigint" />
+  </EntityType>
+  <EntityType Name="SMS_Queue">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TemplateID" Type="int" />
+    <Property Name="RecipientID" Type="int" />
+    <Property Name="RecipientType" Type="tinyint" />
+    <Property Name="Status" Type="tinyint" />
+    <Property Name="QueuedTime" Type="smalldatetime" />
+    <Property Name="SentTime" Type="datetime" />
+    <Property Name="ErrorMessage" Type="varchar" MaxLength="500" />
+    <Property Name="NetworkID" Type="int" />
+    <Property Name="ExamID" Type="int" />
+    <Property Name="AttendanceID" Type="int" />
+    <Property Name="EventID" Type="int" />
+  </EntityType>
+  <EntityType Name="SMS_Templates">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="Message" Type="text" />
+  </EntityType>
+  <EntityType Name="SMS_Triggers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TemplateID" Type="int" />
+    <Property Name="EventID" Type="int" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="StartsFrom0AfterEachBilling">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sDate" Type="smalldatetime" />
+    <Property Name="ArivalTime" Type="varchar" MaxLength="50" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="PersonalizedFeeID" Type="int" />
+    <Property Name="Details" Type="text" />
+    <Property Name="Amount" Type="int" />
+  </EntityType>
+  <EntityType Name="Student_Attendance">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="sDate" Type="smalldatetime" />
+    <Property Name="Status" Type="tinyint" />
+    <Property Name="Type" Type="tinyint" />
+    <Property Name="OperatorID" Type="int" />
+    <Property Name="UpdateDate" Type="smalldatetime" />
+    <Property Name="Remarks" Type="varchar" MaxLength="500" />
+    <Property Name="Present" Type="bit" />
+    <Property Name="Absent" Type="bit" />
+    <Property Name="Leave" Type="bit" />
+    <Property Name="Offday" Type="bit" />
+  </EntityType>
+  <EntityType Name="Student_Family">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FatherName" Type="nvarchar" MaxLength="100" />
+    <Property Name="MotherName" Type="nvarchar" MaxLength="100" />
+    <Property Name="FatherOccupationID" Type="int" />
+    <Property Name="MotherOccupationID" Type="int" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" />
+    <Property Name="Phone2" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="100" />
+    <Property Name="FatherCNIC" Type="varchar" MaxLength="20" />
+    <Property Name="MotherCNIC" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Student_Groups">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Student_Guardian_Relation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="GuardianID" Type="int" />
+    <Property Name="RelationID" Type="int" />
+  </EntityType>
+  <EntityType Name="Student_Guardians">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="300" />
+    <Property Name="Phone" Type="bigint" />
+    <Property Name="Phone2" Type="bigint" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="500" />
+    <Property Name="Status" Type="tinyint" />
+    <Property Name="NIC" Type="varchar" MaxLength="50" />
+    <Property Name="Voice" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Student_Relations">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="StudentPayments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="SectionID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="FeeType" Type="varchar" MaxLength="50" />
+    <Property Name="Dues" Type="int" />
+    <Property Name="Paid" Type="int" />
+    <Property Name="S_Date" Type="smalldatetime" />
+    <Property Name="PersonalizedFeeID" Type="int" />
+    <Property Name="FeeTypeID" Type="int" />
+    <Property Name="FeeChallanDetailID" Type="int" />
+    <Property Name="Status" Type="tinyint" />
+    <Property Name="Fine" Type="int" />
+    <Property Name="LateDays" Type="int" />
+    <Property Name="Remarks" Type="text" />
+    <Property Name="PaidType" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="StudentPayments_History">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Action" Type="varchar" MaxLength="50" />
+    <Property Name="ActionDate" Type="smalldatetime" />
+    <Property Name="ActionUserID" Type="int" />
+    <Property Name="StudentPaymentsID" Type="nchar" MaxLength="10" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="SectionID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="FeeType" Type="varchar" MaxLength="50" />
+    <Property Name="DuesFrom" Type="int" />
+    <Property Name="DuesTo" Type="int" />
+    <Property Name="PaidFrom" Type="int" />
+    <Property Name="PaidTo" Type="int" />
+    <Property Name="S_Date" Type="smalldatetime" />
+    <Property Name="PersonalizedFeeID" Type="int" />
+    <Property Name="FeeTypeID" Type="int" />
+    <Property Name="FeeChallanDetailID" Type="int" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="Fine" Type="int" />
+    <Property Name="LateDays" Type="int" />
+    <Property Name="WaiveOff" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Remarks" Type="text" />
+    <Property Name="WaiveOffUserID" Type="int" />
+  </EntityType>
+  <EntityType Name="StudentPaymentsMeta">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaymentID" Type="int" />
+    <Property Name="KeyName" Type="varchar" MaxLength="200" />
+    <Property Name="KeyValue" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Students">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SectionID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="RollNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="sDate" Type="smalldatetime" />
+    <Property Name="Status" Type="tinyint" />
+    <Property Name="image" Type="varbinary(max)" />
+    <Property Name="BirthDate" Type="smalldatetime" />
+    <Property Name="StuCNIC" Type="varchar" MaxLength="200" />
+    <Property Name="FamilyID" Type="int" />
+    <Property Name="Gender" Type="tinyint" />
+    <Property Name="JoiningClassID" Type="int" />
+    <Property Name="LeavingDate" Type="smalldatetime" />
+    <Property Name="registration_no" Type="varchar" MaxLength="50" />
+    <Property Name="NationalityID" Type="int" />
+    <Property Name="ReligionID" Type="int" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="StuGroupID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SMST4M.dbo.Students_temp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Students_temp">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="RollNo" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SectionID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="RollNo" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="FatherName" Type="varchar" MaxLength="50" />
+    <Property Name="MotherName" Type="varchar" MaxLength="50" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" />
+    <Property Name="Phone2" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="500" />
+    <Property Name="sDate" Type="smalldatetime" />
+    <Property Name="Status" Type="tinyint" />
+    <Property Name="image" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="StudentsMeta">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="KeyName" Type="varchar" MaxLength="200" />
+    <Property Name="KeyValue" Type="varchar" MaxLength="800" />
+  </EntityType>
+  <EntityType Name="TB_RegisterStudent">
+    <Key>
+      <PropertyRef Name="RollNo" />
+    </Key>
+    <Property Name="RollNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="DOB" Type="nvarchar" MaxLength="50" />
+    <Property Name="Image" Type="nvarchar" MaxLength="50" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+    <Property Name="Class" Type="nvarchar" MaxLength="50" />
+    <Property Name="Section" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="DateOfAdmission" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleID" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="500" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="Username" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="100" />
+    <Property Name="RankID" Type="int" />
+    <Property Name="NationalityID" Type="int" />
+    <Property Name="EducationID" Type="int" />
+    <Property Name="ExperienceID" Type="int" />
+    <Property Name="ReligionID" Type="int" />
+    <Property Name="AppointmentDate" Type="smalldatetime" />
+    <Property Name="TerminationDate" Type="smalldatetime" />
+    <Property Name="DateOfBirth" Type="smalldatetime" />
+    <Property Name="Phone2" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Comments" Type="text" />
+  </EntityType>
+  <Association Name="FK_ExpenseAmounts_ExpenseNames_userid">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="ExpenseAmounts" Type="Self.ExpenseAmounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ExpenseAmounts">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SMST4MModelStoreContainer">
+    <EntitySet Name="Academic_ClassRoutine" EntityType="Self.Academic_ClassRoutine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Academic_ClassRoutine_Days" EntityType="Self.Academic_ClassRoutine_Days" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Academic_ClassSubjects" EntityType="Self.Academic_ClassSubjects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Academic_Courses" EntityType="Self.Academic_Courses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Academic_CourseStudents" EntityType="Self.Academic_CourseStudents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Academic_Days" EntityType="Self.Academic_Days" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Academic_Holydays" EntityType="Self.Academic_Holydays" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Academic_Periods" EntityType="Self.Academic_Periods" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Academic_Subjects" EntityType="Self.Academic_Subjects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AllowanceAmounts" EntityType="Self.AllowanceAmounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AllowanceTypes" EntityType="Self.AllowanceTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentAreas" EntityType="Self.AssessmentAreas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentCategories" EntityType="Self.AssessmentCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentColors" EntityType="Self.AssessmentColors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentFindingDetail" EntityType="Self.AssessmentFindingDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssessmentFindingMaster" EntityType="Self.AssessmentFindingMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Capabilities" EntityType="Self.Capabilities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Capabilities_Advance" EntityType="Self.Capabilities_Advance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Classes" EntityType="Self.Classes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClassLevels" EntityType="Self.ClassLevels" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Commitments" EntityType="Self.Commitments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Document_files" EntityType="Self.Document_files" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Document_names" EntityType="Self.Document_names" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Educations" EntityType="Self.Educations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeAttendance" EntityType="Self.EmployeeAttendance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeLoans" EntityType="Self.EmployeeLoans" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeLoans_History" EntityType="Self.EmployeeLoans_History" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeePayments" EntityType="Self.EmployeePayments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeePayments_History" EntityType="Self.EmployeePayments_History" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeePenalties" EntityType="Self.EmployeePenalties" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeRefundableTypes" EntityType="Self.EmployeeRefundableTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeSecurityInstallments" EntityType="Self.EmployeeSecurityInstallments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeSecurityWithDraws" EntityType="Self.EmployeeSecurityWithDraws" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exams" EntityType="Self.Exams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exams_ClassSubjects" EntityType="Self.Exams_ClassSubjects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exams_DateSheet" EntityType="Self.Exams_DateSheet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exams_DateSheet_Detail" EntityType="Self.Exams_DateSheet_Detail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exams_DateSheet_Names" EntityType="Self.Exams_DateSheet_Names" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exams_GeneralRemarks" EntityType="Self.Exams_GeneralRemarks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exams_Grade" EntityType="Self.Exams_Grade" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exams_GroupCollections" EntityType="Self.Exams_GroupCollections" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exams_Groups" EntityType="Self.Exams_Groups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exams_Marks" EntityType="Self.Exams_Marks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exams_Tests" EntityType="Self.Exams_Tests" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExpenseAmount_History" EntityType="Self.ExpenseAmount_History" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExpenseAmounts" EntityType="Self.ExpenseAmounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExpenseCategories" EntityType="Self.ExpenseCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExpenseHeads" EntityType="Self.ExpenseHeads" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Experiences" EntityType="Self.Experiences" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FeeAssignments" EntityType="Self.FeeAssignments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FeeChallan" EntityType="Self.FeeChallan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FeeChallanDetail" EntityType="Self.FeeChallanDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FeeReceiptDetail" EntityType="Self.FeeReceiptDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FeeReceipts" EntityType="Self.FeeReceipts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FeeRecurring" EntityType="Self.FeeRecurring" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FeeTypes" EntityType="Self.FeeTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FingerPrints" EntityType="Self.FingerPrints" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Labels_Internal" EntityType="Self.Labels_Internal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Labels_Navigation" EntityType="Self.Labels_Navigation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Nationalities" EntityType="Self.Nationalities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Occupations" EntityType="Self.Occupations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PersonalizedFee" EntityType="Self.PersonalizedFee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ranks" EntityType="Self.Ranks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Religions" EntityType="Self.Religions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalaryIncrements" EntityType="Self.SalaryIncrements" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalaryMonth" EntityType="Self.SalaryMonth" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalaryReceiptDetail" EntityType="Self.SalaryReceiptDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalaryReceipts" EntityType="Self.SalaryReceipts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SchoolSettings" EntityType="Self.SchoolSettings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sections" EntityType="Self.Sections" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SecurityFee" EntityType="Self.SecurityFee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SMS_Networks" EntityType="Self.SMS_Networks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SMS_Queue" EntityType="Self.SMS_Queue" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SMS_Templates" EntityType="Self.SMS_Templates" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SMS_Triggers" EntityType="Self.SMS_Triggers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StartsFrom0AfterEachBilling" EntityType="Self.StartsFrom0AfterEachBilling" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student_Attendance" EntityType="Self.Student_Attendance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student_Family" EntityType="Self.Student_Family" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student_Groups" EntityType="Self.Student_Groups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student_Guardian_Relation" EntityType="Self.Student_Guardian_Relation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student_Guardians" EntityType="Self.Student_Guardians" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student_Relations" EntityType="Self.Student_Relations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentPayments" EntityType="Self.StudentPayments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentPayments_History" EntityType="Self.StudentPayments_History" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentPaymentsMeta" EntityType="Self.StudentPaymentsMeta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentsMeta" EntityType="Self.StudentsMeta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_RegisterStudent" EntityType="Self.TB_RegisterStudent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Students_temp" EntityType="Self.Students_temp" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Students_temp].[ID] AS [ID], 
+    [Students_temp].[SectionID] AS [SectionID], 
+    [Students_temp].[UserID] AS [UserID], 
+    [Students_temp].[RollNo] AS [RollNo], 
+    [Students_temp].[Name] AS [Name], 
+    [Students_temp].[FatherName] AS [FatherName], 
+    [Students_temp].[MotherName] AS [MotherName], 
+    [Students_temp].[Phone] AS [Phone], 
+    [Students_temp].[Phone2] AS [Phone2], 
+    [Students_temp].[Address] AS [Address], 
+    [Students_temp].[sDate] AS [sDate], 
+    [Students_temp].[Status] AS [Status], 
+    [Students_temp].[image] AS [image]
+    FROM [dbo].[Students_temp] AS [Students_temp]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_ExpenseAmounts_ExpenseNames_userid" Association="Self.FK_ExpenseAmounts_ExpenseNames_userid">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ExpenseAmounts" EntitySet="ExpenseAmounts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

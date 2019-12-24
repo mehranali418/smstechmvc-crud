@@ -1,10 +1,10 @@
-﻿@model System.Data.DataTable
+﻿
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
-
+ 
 <!-- Bread crumb and right sidebar toggle -->
 <!-- ============================================================== -->
 <div class="row page-titles">
@@ -38,32 +38,15 @@
                                 <th>  Name         </th>
                                 <th>  Class Number         </th>
                                 <th>  Level Name         </th>
-
                                 <th>  Level         </th>
 
-                                <th>Edit</th>
-                                <th>Delete</th>
+                                <th>Actions</th>
 
                             </tr>
                         </thead>
-                        <tfoot>
-
-                            @for (int i = 0; i < Model.Rows.Count; i++)
-                            {
-                                <tr>
-                                    <td>@Model.Rows[i][0]</td>
-                                    <td>@Model.Rows[i][1]</td>
-                                    <td>@Model.Rows[i][2]</td>
-                                    <td>@Model.Rows[i][3]</td>
-
-
-                                    <td><a href="@Url.Action("Edit", "Student", new {@id=Model.Rows[i][0]})">Edit</a></td>
-                                    <td><a href="@Url.Action("Delete", "Student", new { @id = Model.Rows[i][0] })">Delete</a></td>
-                                </tr>
-                            }
-
-                        </tfoot>
-
+                        <tbody id="body">
+                            <tr id="LoadingStatus" style="color:red"></tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -73,3 +56,126 @@
 </div>
 <!-- ============================================================== -->
 <!-- End PAge Content -->
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        debugger
+        GetData();
+    })
+
+    function GetData() {
+        $('#body').empty();
+        $.ajax({
+            url: '/Classes/GetClasses',
+            Type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (result) {
+                var rows = '';
+                $.each(result, function (key, value) {
+                    rows = '<tr>'
+                    + '<td>' + value.ID + '</td>'
+                    + '<td>' + value.Name + '</td>'
+                    + '<td>' + value.ClassNumber + '</td>'
+                    + '<td>' + value.Level_id + '</td>'
+                    + '<td><input type="button" class="btn btn-primary edit" value="Edit" > <input type="button" class="btn btn-danger delete" value="Delete"></td>'
+                    '</tr>'
+                    $('#body').append(rows);
+                })
+            },
+            error: function (result) {
+            }
+        })
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @*<script>
+    $(document).ready(function () {
+        debugger
+        GetData()
+    })
+    //$(function GetData() {
+    //    $.get("GetData", {}, function (data) {
+    //        var row;
+    //        $.each(data, function (i, v1) {
+    //            row += "<tr><td>" + v1.levelId + "</td><td>" + v1.name + "</td><td>" + v1.classNumber + "</td><td>" + v1.Class_LevelName + "</td></tr>"
+    //        });
+    //        $("#body").append(row);
+    //    })
+
+    //})
+
+
+    function GetData() {
+        $('#body').empty();
+        $.ajax({
+            url: '/Classes/GetClasses',
+            Type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (result) {
+                var rows = '';
+                $.each(result, function (key, value) {
+                    rows += '<tr>'
+                    + '<td>' + value.levelId + '</td>'
+                    + '<td>' + value.name + '</td>'
+                    + '<td>' + value.classNumber + '</td>'
+                    + '<td>' + value.Class_LevelName + '</td>'
+                    + '<td><input type="button" class="btn btn-primary edit" value="Edit" > <input type="button" class="btn btn-danger delete" value="Delete"></td>'
+                    '</tr>'
+                    $('#body').append(rows);
+                })
+            },
+            error: function (result) {
+            }
+        })
+    }
+    </script>*@

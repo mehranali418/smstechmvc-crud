@@ -13,43 +13,18 @@ namespace SMSTech.Controllers
 {
     public class SectionController : Controller
     {
-        Section Sec = new Section();
-
+        SMST4MEntities1 db = new SMST4MEntities1();
         //
         // GET: /Section/
         public ActionResult Index()
         {
-              DataTable dt = new DataTable();
+            return View();
+        }
 
-            using (WebClient webClient = new System.Net.WebClient())
-            {
-                var url = "http://192.168.0.119:3000/section";
-                var json = webClient.DownloadString(url);
-                JArray jsonArray = JArray.Parse(json);
-                int lenght = jsonArray.Count;
-                dynamic data;
-
-                dt.Columns.Add("Name");
-                dt.Columns.Add("ClassID");
-               
-
-                for (int i = 0; i < lenght; i++)
-                {
-                    data = JObject.Parse(jsonArray[i].ToString());
-
-                    Sec.name = data.Name;
-                    Sec.cid = data.ClassID;
-                    
-
-                    dt.Rows.Add();
-                    dt.Rows[i]["Name"] = Sec.name;
-                    dt.Rows[i]["ClassID"] = Sec.cid;
-                    
-                }
-            }
-            return View(dt);
-        
-
+        public JsonResult GetSections()
+        {
+            var Section = db.Sections.ToList();
+            return Json(Section, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult AddSection()

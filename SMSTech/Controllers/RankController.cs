@@ -13,39 +13,21 @@ namespace SMSTech.Controllers
 {
     public class RankController : Controller
     {
+        SMST4MEntities1 db = new SMST4MEntities1();
         Rank rank = new Rank();
 
         //
         // GET: /Rank/
         public ActionResult Index()
         {
-            DataTable dt = new DataTable();
-
-            using (WebClient webClient = new System.Net.WebClient())
-            {
-                var url = "http://192.168.0.119:3000/Rank";
-                var json = webClient.DownloadString(url);
-                JArray jsonArray = JArray.Parse(json);
-                int lenght = jsonArray.Count;
-                dynamic data;
-
-                dt.Columns.Add("Name");
-
-
-                for (int i = 0; i < lenght; i++)
-                {
-                    data = JObject.Parse(jsonArray[i].ToString());
-
-                    rank.name = data.Name;
-
-                    dt.Rows.Add();
-                    dt.Rows[i]["Name"] = rank.name;
-
-                }
-            }
-            return View(dt);
+           return View();
         }
 
+        public JsonResult GetRank()
+        {
+            var rank = db.Ranks.ToList();
+            return Json(rank,JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult AddRanks()
         {

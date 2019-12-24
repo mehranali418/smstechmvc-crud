@@ -34,39 +34,18 @@
                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                
+                                <th>ID</th>
                                 <th>Name   </th>
                                 <th>Phone  </th>
                                 <th>Phone2 </th>
-                                <th>Addr   </th>
-                                <th>status </th>
-                                <th>nic    </th>
+                                <th>Address   </th>
+                                <th>Status </th>
+                                <th>NIC    </th>
                                 <th>voice  </th>
-                                <th>Edit  </th>
-                                <th>Delete  </th>
+                                <th>Action  </th>
                             </tr>
                         </thead>
-                        <tfoot>
-
-                            @for (int i = 0; i < Model.Rows.Count; i++)
-                            {
-                                <tr>
-                                    <td>@Model.Rows[i][0]</td>
-                                    <td>@Model.Rows[i][1]</td>
-                                    <td>@Model.Rows[i][2]</td>
-                                    <td>@Model.Rows[i][3]</td>
-                                    <td>@Model.Rows[i][4]</td>
-                                    <td>@Model.Rows[i][5]</td>
-                                    <td>@Model.Rows[i][6]</td>
-                                    
-
-
-                                    <td><a href="@Url.Action("Edit", "Student", new {@id=Model.Rows[i][0]})">Edit</a></td>
-                                    <td><a href="@Url.Action("Delete", "Student", new { @id = Model.Rows[i][0] })">Delete</a></td>
-                                </tr>
-                            }
-
-                        </tfoot>
+                       <tbody id="body"></tbody>
 
                     </table>
                 </div>
@@ -77,3 +56,43 @@
 </div>
 <!-- ============================================================== -->
 <!-- End PAge Content -->
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        debugger
+        GetData()
+    })
+
+    function GetData() {
+        $('#body').empty();
+        $.ajax({
+            url: '/User/GetUsers',
+            Type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (result) {
+                var row = "";
+                $.each(result, function (key, value) {
+                    rows = '<tr>'
+                    + '<td>' + value.ID + '</td>'
+                    + '<td>' + value.Name + '</td>'
+                    + '<td>' + value.Phone + '</td>'
+                    + '<td>' + value.Phone2 + '</td>'
+                    + '<td>' + value.Address + '</td>'
+                    + '<td>' + value.Status + '</td>'
+                    + '<td>' + value.NIC + '</td>'
+                    + '<td>' + value.Voice + '</td>'
+
+                    + '<td><input type="button" class="btn btn-primary edit" value="Edit" > <input type="button" class="btn btn-danger delete" value="Delete"></td>'
+                    '</tr>'
+                    $('#body').append(rows);
+                })
+            },
+            error: function (result) {
+            }
+        })
+    }
+
+</script>

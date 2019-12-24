@@ -18,38 +18,38 @@ namespace SMSTech.Controllers
         {
             DataTable dt = new DataTable();
 
-            using (WebClient webClient = new System.Net.WebClient())
-            {
-                var url = "https://amga-monorepo-starter-api.localtunnel.me/watercharges";
-                var json = webClient.DownloadString(url);
-                JArray jsonArray = JArray.Parse(json);
-                int lenght = jsonArray.Count;
-                dynamic data;
-                Watercharges Wcharges = new Watercharges();
-                dt.Columns.Add("Month");
-                dt.Columns.Add("PaidDate");
-                dt.Columns.Add("Amount");
+            //using (WebClient webClient = new System.Net.WebClient())
+            //{
+            //    var url = "https://amga-monorepo-starter-api.localtunnel.me/watercharges";
+            //    var json = webClient.DownloadString(url);
+            //    JArray jsonArray = JArray.Parse(json);
+            //    int lenght = jsonArray.Count;
+            //    dynamic data;
+            //    Watercharges Wcharges = new Watercharges();
+            //    dt.Columns.Add("Month");
+            //    dt.Columns.Add("PaidDate");
+            //    dt.Columns.Add("Amount");
 
 
 
-                for (int i = 0; i < lenght; i++)
-                {
-                    data = JObject.Parse(jsonArray[i].ToString());
-                    //Stud.ID = int.Parse(data.Std_RollNo);
-                    Wcharges.ExpName = data.W_ExpenceName;
-                    Wcharges.ExpDate = data.W_ExpenceDate;
-                    Wcharges.Amount = data.W_Ammount;
+            //    for (int i = 0; i < lenght; i++)
+            //    {
+            //        data = JObject.Parse(jsonArray[i].ToString());
+            //        //Stud.ID = int.Parse(data.Std_RollNo);
+            //        Wcharges.ExpName = data.W_ExpenceName;
+            //        Wcharges.ExpDate = data.W_ExpenceDate;
+            //        Wcharges.Amount = data.W_Ammount;
 
 
-                    dt.Rows.Add();
-                    dt.Rows[i]["Month"] = Wcharges.ExpName;
-                    dt.Rows[i]["PaidDate"] = Wcharges.ExpDate;
-                    dt.Rows[i]["Amount"] = Wcharges.Amount;
+            //        dt.Rows.Add();
+            //        dt.Rows[i]["Month"] = Wcharges.ExpName;
+            //        dt.Rows[i]["PaidDate"] = Wcharges.ExpDate;
+            //        dt.Rows[i]["Amount"] = Wcharges.Amount;
 
 
-                }
+            //    }
 
-            }
+            //}
             return View(dt);
         }
 

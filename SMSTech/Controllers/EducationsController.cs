@@ -13,44 +13,23 @@ namespace SMSTech.Controllers
 {
     public class EducationsController : Controller
     {
+        
+        SMST4MEntities1 db = new SMST4MEntities1();
         //
         // GET: /Educations/
         public ActionResult Index()
-        {
-            DataTable dt = new DataTable();
-
-            using (WebClient webClient = new System.Net.WebClient())
-            {
-                var url = "http://192.168.0.119:3000/educations";
-                var json = webClient.DownloadString(url);
-                JArray jsonArray = JArray.Parse(json);
-                int lenght = jsonArray.Count;
-                dynamic data;
-                Educations Edu = new Educations();
-
-                dt.Columns.Add("Name");
-
-
-                for (int i = 0; i < lenght; i++)
-                {
-                    data = JObject.Parse(jsonArray[i].ToString());
-
-                    Edu.Name = data.Name;
-
-
-                    dt.Rows.Add();
-                    dt.Rows[i]["Name"] = Edu.Name;
-
-                }
-            }
-            return View(dt);
-        
-
+        {           
+            return View();
         }
 
+        public JsonResult GetClassLevel()
+        {
+            var education = db.Educations.ToList();
+            return Json(education,JsonRequestBehavior.AllowGet);
+        }
 
         [HttpPost]
-        public ActionResult AddEducation(Educations e)
+        public ActionResult AddEducation(Education e)
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://192.168.0.119:3000/");
@@ -68,7 +47,7 @@ namespace SMSTech.Controllers
         [HttpPut]
         public ActionResult Edit(int ID)
         {
-            Educations Education = null;
+            Education edu = null;
 
             using (var client = new HttpClient())
             {
@@ -80,13 +59,13 @@ namespace SMSTech.Controllers
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readTask = result.Content.ReadAsAsync<Educations>();
+                    var readTask = result.Content.ReadAsAsync<Education>();
                     readTask.Wait();
-                    Education = readTask.Result;
+                    edu = readTask.Result;
                 }
             }
 
-            return View(Education);
+            return View(edu);
         }
         public ActionResult Edit()
         {

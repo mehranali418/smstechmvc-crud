@@ -1,4 +1,4 @@
-﻿@model System.Data.DataTable
+﻿@model SMSTech.Models.Student
 
 @{
     ViewBag.Title = "StudentDetails";
@@ -25,56 +25,52 @@
 <div class="card">
     <div class="card-body">
         <h4 class="card-title">Search Now</h4>
-        @using (Html.BeginForm("Index", "Student", FormMethod.Get))
-        {
+     
+
+        <div class="row">
+            
+            <div class="col-md-3">
+                <label class="m-t-20">Class</label>
+               
+
+                @Html.DropDownListFor(m => m.JoiningClassID, ViewBag.ClassList as SelectList, "--Select Class--", new { @id = "employeeDropDownList", @name = "employeeDropDownList", @class = "form-control ",  })
+            
+            </div>
+            
+            <div class="col-md-3">
+                <label class="m-t-20">Section</label>
+                @Html.DropDownListFor(m => m.SectionID, ViewBag.SectionList as SelectList, "--Select Section--", new { @id = "DropDwn", @class = "form-control " })
+            </div>
+            <div class="col-md-3">
+                <label class="m-t-20">Religion</label>
+                @Html.DropDownListFor(m => m.JoiningClassID, ViewBag.ReligionList as SelectList, "--Select Religion--", new { @id = "DropDwn", @class = "form-control " })
+            </div>
+            <div class="col-md-3">
+                <label class="m-t-20">Nationality</label>
+                @Html.DropDownListFor(m => m.JoiningClassID, ViewBag.NationalityList as SelectList, "--Select Nationality--", new { @id = "DropDwn", @class = "form-control " })
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-6">
                 <label class="m-t-20">Roll #</label>
                 <div class="input-group">
-                    
-                 <input class="form-control" id="single-input" name="ByID" placeholder="Roll #">
-                                            <div class="input-group-append">
-                             <button type="submit" id="check-minutes" class="btn waves-effect waves-light btn-success">Roll #</button>
-
-        </div>
-
-                </div>
-            </div>
-            <div class="col-md-6">
-                <label class="m-t-20">Now time</label>
-                <div class="input-group">
-                    <input class="form-control" id="single-input" value="" placeholder="Now">
+                    <input class="form-control" id="Search" placeholder="Roll #">
                     <div class="input-group-append">
-                        <button type="button" id="check-minutes" class="btn waves-effect waves-light btn-success">Search</button>
+                        <button type="submit" onclick="EditRecord()" id="SearchBtn" class="btn waves-effect waves-light btn-success">Roll #</button>
+
                     </div>
+
                 </div>
             </div>
         </div>
-       
-            
-                 
-             <div class="row">
-            <div class="col-md-6">
-                <label class="m-t-20">Roll #</label>
-                <div class="input-group">
-                    
-                 
-                    <div class="btn-group col-md-5">
-                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Action
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="javascript:void(0)">Action</a>
-                            <a class="dropdown-item" href="javascript:void(0)">Another action</a>
-                            <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:void(0)">Separated link</a>
-                        </div>
-                    </div>
-                </div>
-            </div>   
-         </div>
-        }
+
+
+
+
+
+
+
     </div>
 </div>
 <!-- End Bread crumb and right sidebar toggle -->
@@ -116,45 +112,14 @@
                                 <th>  Joining Class ID       </th>
                                 <th>  Leaving Date       </th>
                                 <th>  Registration No       </th>
+                                <th>  Nationality       </th>
                                 <th>  Religion ID     </th>
                                 <th>  Email       </th>
                                 <th>  Student Group ID      </th>
-                                <th>  Edit      </th>
-                                <th>  Delete      </th>
-
+                                <th>  Actions      </th>
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr></tr>
-
-                            @for (int i = 0; i < Model.Rows.Count; i++)
-                            {
-                                <tr>
-                                    <td>@Model.Rows[i][0]</td>
-                                    <td>@Model.Rows[i][1]</td>
-                                    <td>@Model.Rows[i][2]</td>
-                                    <td>@Model.Rows[i][3]</td>
-                                    <td>@Model.Rows[i][4]</td>
-                                    <td>@Model.Rows[i][5]</td>
-                                    <td>@Model.Rows[i][6]</td>
-                                    <td>@Model.Rows[i][7]</td>
-                                    <td>@Model.Rows[i][8]</td>
-                                    <td>@Model.Rows[i][9]</td>
-                                    <td>@Model.Rows[i][10]</td>
-                                    <td>@Model.Rows[i][11]</td>
-                                    <td>@Model.Rows[i][12]</td>
-                                    <td>@Model.Rows[i][13]</td>
-                                    <td>@Model.Rows[i][14]</td>
-                                    <td>@Model.Rows[i][15]</td>
-                                    <td>@Model.Rows[i][16]</td>
-
-
-                                    <td><a href="@Url.Action("Edit", "Student", new {@id=Model.Rows[i][0]})">Edit</a></td>
-                                    <td><a href="@Url.Action("Delete", "Student", new { @id = Model.Rows[i][0] })">Delete</a></td>
-                                </tr>
-                            }
-
-                        </tfoot>
+                        <tbody id="body"></tbody>
 
                     </table>
                 </div>
@@ -166,3 +131,179 @@
 
 <!-- ============================================================== -->
 <!-- End PAge Content -->
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    //$(document).ready(function () {
+    //    debugger
+    //    GetData()
+    //})
+
+    $.get("/Student/GetStudents", null, GetData);
+
+    function GetData() {
+        $('#body').empty();
+        $.ajax({
+            url: '/Student/GetStudents',
+            Type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (result) {
+                var row = "";
+                $.each(result, function (key, value) {
+                    rows = '<tr>'
+                    + '<td>' + value.SectionID + '</td>'
+                    + '<td>' + value.UserID + '</td>'
+                    + '<td>' + value.RollNo + '</td>'
+                    + '<td>' + value.Name + '</td>'
+                    + '<td>' + value.sDate + '</td>'
+                    + '<td>' + value.Status + '</td>'
+                    + '<td>' + value.image + '</td>'
+                    + '<td>' + value.BirthDate + '</td>'
+                    + '<td>' + value.StuCNIC + '</td>'
+                    + '<td>' + value.FamilyID + '</td>'
+                    + '<td>' + value.Gender + '</td>'
+                    + '<td>' + value.JoiningClassID + '</td>'
+                    + '<td>' + value.LeavingDate + '</td>'
+                    + '<td>' + value.registration_no + '</td>'
+                    + '<td>' + value.NationalityID + '</td>'
+                    + '<td>' + value.ReligionID + '</td>'
+                    + '<td>' + value.Email + '</td>'
+                    + '<td>' + value.StuGroupID + '</td>'
+                    + '<td><input type="button" class="btn btn-primary edit" value="Edit" > <input type="button" class="btn btn-danger delete" value="Delete"></td>'
+                    '</tr>'
+                    $('#body').append(rows);
+                })
+            },
+            error: function (result) {
+            }
+        })
+    }
+
+    function EditRecord(rollno) {
+        var url = "/Student/GetStudentsByRoll?rollno=" + rollno;
+        $('#body').empty();
+        $.ajax({
+            type: "GET",
+            url: url,
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            //success: function (data) {
+            //    var obj = JSON.parse(data);
+            //    $("#rollno").value.RollNo;
+            success: function (result) {
+                var row = "";
+                $.each(result, function (key, value) {
+                    rows = '<tr>'
+                    + '<td>' + value.SectionID + '</td>'
+                    + '<td>' + value.UserID + '</td>'
+                    + '<td>' + value.RollNo + '</td>'
+                    + '<td>' + value.Name + '</td>'
+                    + '<td>' + value.sDate + '</td>'
+                    + '<td>' + value.Status + '</td>'
+                    + '<td>' + value.image + '</td>'
+                    + '<td>' + value.BirthDate + '</td>'
+                    + '<td>' + value.StuCNIC + '</td>'
+                    + '<td>' + value.FamilyID + '</td>'
+                    + '<td>' + value.Gender + '</td>'
+                    + '<td>' + value.ClassID + '</td>'
+                    + '<td>' + value.LeavingDate + '</td>'
+                    + '<td>' + value.registration_no + '</td>'
+                    + '<td>' + value.NationalityID + '</td>'
+                    + '<td>' + value.ReligionID + '</td>'
+                    + '<td>' + value.Email + '</td>'
+                    + '<td>' + value.StuGroupID + '</td>'
+                    + '<td><input type="button" class="btn btn-primary edit" value="Edit" > <input type="button" class="btn btn-danger delete" value="Delete"></td>'
+                    '</tr>'
+                    $('#body').append(rows);
+                })
+            },
+
+        })
+    }
+
+    $("#SearchBtn").click(function () {
+        var RollNo = $("#RollNo").val();
+        var SearchValue = $("#Search").val();
+        var SetData = $("#DataSearching");
+        SetData.html("");
+        $.ajax({
+            type: "post",
+            url: "/Home/GetSearchingData?RollNo=" + RollNo,
+            //url: "/Home/GetSearchingData?RollNo=" + RollNo + "&SearchValue=" + SearchValue,
+
+            contentType: "html",
+            success: function (result) {
+                if (result.length == 0) {
+                    SetData.append('<tr style="color:red"><td colspan="3">No Match Data</td></tr>')
+                }
+                else {
+                    $.each(result, function (key, value) {
+                        rows = '<tr>'
+                        + '<td>' + value.SectionID + '</td>'
+                        + '<td>' + value.UserID + '</td>'
+                        + '<td>' + value.RollNo + '</td>'
+                        + '<td>' + value.Name + '</td>'
+                        + '<td>' + value.sDate + '</td>'
+                        + '<td>' + value.Status + '</td>'
+                        + '<td>' + value.image + '</td>'
+                        + '<td>' + value.BirthDate + '</td>'
+                        + '<td>' + value.StuCNIC + '</td>'
+                        + '<td>' + value.FamilyID + '</td>'
+                        + '<td>' + value.Gender + '</td>'
+                        + '<td>' + value.ClassID + '</td>'
+                        + '<td>' + value.LeavingDate + '</td>'
+                        + '<td>' + value.registration_no + '</td>'
+                        + '<td>' + value.NationalityID + '</td>'
+                        + '<td>' + value.ReligionID + '</td>'
+                        + '<td>' + value.Email + '</td>'
+                        + '<td>' + value.StuGroupID + '</td>'
+                        + '<td><input type="button" class="btn btn-primary edit" value="Edit" > <input type="button" class="btn btn-danger delete" value="Delete"></td>'
+                        '</tr>'
+                        SetData.append(Data);
+                    })
+                }
+            }
+        });
+    });
+
+
+    $("#employeeDropDownList").change(function () {
+        $.ajax({
+            type: 'GET',
+            url: '/Student/GetClassesDrop',
+            datatype: 'JSON',
+            data: { 'clsname': $(this).val() },
+            success: function (data) {
+                $('#body').empty();
+                $.each(data, function (key, value) {
+                    var rows = "<tr>" +
+                    + '<td>' + value.SectionID + '</td>'
+                    + '<td>' + value.UserID + '</td>'
+                    + '<td>' + value.RollNo + '</td>'
+                    + '<td>' + value.Name + '</td>'
+                    + '<td>' + value.sDate + '</td>'
+                    + '<td>' + value.Status + '</td>'
+                    + '<td>' + value.image + '</td>'
+                    + '<td>' + value.BirthDate + '</td>'
+                    + '<td>' + value.StuCNIC + '</td>'
+                    + '<td>' + value.FamilyID + '</td>'
+                    + '<td>' + value.Gender + '</td>'
+                    + '<td>' + value.ClassID + '</td>'
+                    + '<td>' + value.LeavingDate + '</td>'
+                    + '<td>' + value.registration_no + '</td>'
+                    + '<td>' + value.NationalityID + '</td>'
+                    + '<td>' + value.ReligionID + '</td>'
+                    + '<td>' + value.Email + '</td>'
+                    + '<td>' + value.StuGroupID + '</td>'
+                               "</tr>";
+                    $('#body').append(rows);
+                });
+            },
+            error: function (data) { alert(data.responseText); }
+        });
+    });
+    
+</script>
+
+
+

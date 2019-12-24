@@ -13,68 +13,38 @@ namespace SMSTech.Controllers
 {
     public class ClassesController : Controller
     {
-        Classes Class = new Classes();
-       public ActionResult Index()
+        SMST4MEntities1 db = new SMST4MEntities1();
+
+        public ActionResult Index()
         {
-            DataTable dt = new DataTable();
-
-            using (WebClient webClient = new System.Net.WebClient())
-            {
-                var url = "http://192.168.0.119:3000/classes";
-                var json = webClient.DownloadString(url);
-                JArray jsonArray = JArray.Parse(json);
-                int lenght = jsonArray.Count;
-                dynamic data;
-
-                dt.Columns.Add("Name");
-                dt.Columns.Add("ClassNumber");
-                dt.Columns.Add("LevelName");
-
-                dt.Columns.Add("Level_id");
-
-                for (int i = 0; i < lenght; i++)
-                {
-                    data = JObject.Parse(jsonArray[i].ToString());
-                    Class.name = data.Name;
-                    Class.classNumber = data.ClassNumber;
-                    Class.Class_LevelName = data.Class_LevelName;
-                    Class.levelId = data.LevelNumber;
-
-
-
-                    dt.Rows.Add();
-                    dt.Rows[i]["Name"] = Class.name;
-                    dt.Rows[i]["ClassNumber"] = Class.classNumber;
-                    dt.Rows[i]["LevelName"] = Class.Class_LevelName;
-                    dt.Rows[i]["Level_id"] = Class.levelId;
-
-                }
-            }
-            return View(dt);
-        
-
+            return View();
+        }
+        public JsonResult GetClasses()
+        {
+            var Class = db.Classes.ToList();
+            return Json(Class, JsonRequestBehavior.AllowGet);
         }
 
-       public ActionResult AddClasses()
-       {
-           return View();
-       }
-       [HttpPost]
-       public ActionResult AddClasses(Classes Class)
-       {
-           HttpClient client = new HttpClient();
-           client.BaseAddress = new Uri("http://192.168.0.119:3000/");
-           var response = client.PostAsJsonAsync("classes/AddClasses", Class).Result;
-           if (response.IsSuccessStatusCode)
-           {
-               Console.Write("Success");
-           }
-           else
-           {
-               Console.Write("Error");
-           }
-           return View(Class);
-       }
+        //public ActionResult AddClasses()
+        //{
+        //    return View();
+        //}
+        //[HttpPost]
+        //public ActionResult AddClasses(Classes Class)
+        //{
+        //    HttpClient client = new HttpClient();
+        //    client.BaseAddress = new Uri("http://192.168.0.119:3000/");
+        //    var response = client.PostAsJsonAsync("classes/AddClasses", Class).Result;
+        //    if (response.IsSuccessStatusCode)
+        //    {
+        //        Console.Write("Success");
+        //    }
+        //    else
+        //    {
+        //        Console.Write("Error");
+        //    }
+        //    return View(Class);
+        //}
 
-	}
+    }
 }
