@@ -1,0 +1,116 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<div class="container">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="row">
+                <input type="text" id="ID" style="display:none" />
+                <label class="control-label col-lg-2">TestID</label>
+                <input type="text" id="TestID" class="form-control col-lg-2" />
+                <label class="control-label col-lg-2">ExamDate</label>
+                <input type="date" id="ExamDate" class="form-control col-lg-2" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="control-label col-lg-2">IsActive</label>
+                <input type="text" id="IsActive" class="form-control col-lg-2" />
+                <label class="control-label col-lg-2">ShortName</label>
+                <input type="text" id="ShortName" class="form-control col-lg-2" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <input type="button" value="Add" id="btn_Add" class="btn btn-primary" />
+                <input type="button" value="Update" id="btn_Update" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+</div>
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>TestID</th>
+        <th>ExamDate</th>
+        <th>Active</th>
+        <th>Name</th>
+        <th>Actions</th>
+    </tr>
+    <tbody id="body"></tbody>
+</table>
+
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        debugger
+        GetData();
+    })
+    function GetData() {
+        $('#body').empty();
+        $.ajax({
+            url: '/Exam/GetData',
+            Type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (result) {
+                var rows = '';
+                $.each(result, function (key, value) {
+                    rows = '<tr>'
+                    + '<td>' + value.ID + '</td>'
+                    + '<td>' + value.TestID + '</td>'
+                    + '<td>' + value.ExamDate + '</td>'
+                    + '<td>' + value.IsActive + '</td>'
+                     + '<td>' + value.ShortName + '</td>'
+                    + '<td><input type="button" class="btn btn-primary edit" value="Edit" > <input type="button" class="btn btn-danger delete" value="Delete"></td>'
+                    '</tr>'
+                    $('#body').append(rows);
+                })
+            },
+            error: function (result) {
+            }
+        })
+    }
+    $(document).delegate('.edit','.click',function(){
+        debugger
+        var rowValue = $(this).closest('tr');
+        var ID = rowValue.find("td:eq(0)").text();
+        var TestID = rowValue.find("td:eq(1)").text();
+        var ExamDate = rowValue.find("td:eq(2)").text();
+        var IsActive = rowValue.find("td:eq(3)").text();
+        var ShortName = rowValue.find("td:eq(4)").text();
+
+        $('#id').val(ID);
+        $('#TestID').val(TestID);
+        $('#ExamDate').val(ExamDate);
+        $('#IsActive').val(IsActive);
+        $('#ShortName').val(ShortName);
+    })
+
+
+   $('#btn_Add').click(function () {
+        debugger
+        var TestID = $('#TestID').val();
+        var ExamDate = $('#ExamDate').val();
+        var IsActive = $('#IsActive').val();
+        var ShortName = $('#ShortName').val();
+        $.ajax({
+            url: '/Exam/Insert/',
+            Type: 'Get',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            data: { "TestID": TestID, "ExamDate": ExamDate, "IsActive": IsActive, "ShortName": ShortName },
+            success: function () {
+                alert("Success");
+                GetData();
+            },
+            error: function () {
+                alert("Failed");
+            }
+        })
+    })
+</script>
+

@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<div class="container">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="row">
+                <input type="text" id="ID" style="display:none" />
+                <label class="control-label col-lg-2">StudentID</label>
+                <input type="text" id="StudentID" class="form-control col-lg-2" />
+                <label class="control-label col-lg-2">GuardianID</label>
+                <input type="text" id="GuardianID" class="form-control col-lg-2" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="control-label col-lg-2">RelationID</label>
+                <input type="text" id="RelationID" class="form-control col-lg-2" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <input type="button" value="Add" id="btn_Add" class="btn btn-primary" />
+                <input type="button" value="Update" id="btn_Update" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+</div>
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>StudentID</th>
+        <th>GuardianID</th>
+        <th>RelationID</th>
+        <th>Actions</th>
+    </tr>
+    <tbody id="body"></tbody>
+</table>
+
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        debugger
+        GetData();
+    })
+    function GetData() {
+        $('#body').empty();
+        $.ajax({
+            url: '/StudentGuardianRelation/GetData',
+            Type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (result) {
+                var rows = '';
+                $.each(result, function (key, value) {
+                    rows = '<tr>'
+                    + '<td>' + value.ID + '</td>'
+                    + '<td>' + value.StudentID + '</td>'
+                    + '<td>' + value.GuardianID + '</td>'
+                    + '<td>' + value.RelationID + '</td>'
+                    + '<td><input type="button" class="btn btn-primary edit" value="Edit" > <input type="button" class="btn btn-danger delete" value="Delete"></td>'
+                    '</tr>'
+                    $('#body').append(rows);
+                })
+            },
+            error: function (result) {
+            }
+        })
+    }
+    $(document).delegate('.edit','.click',function(){
+        debugger
+        var rowValue = $(this).closest('tr');
+        var ID = rowValue.find("td:eq(0)").text();
+        var StudentID = rowValue.find("td:eq(1)").text();
+        var GuardianID = rowValue.find("td:eq(2)").text();
+        var RelationID = rowValue.find("td:eq(3)").text();
+
+        $('#ID').val(ID);
+        $('#StudentID').val(StudentID);
+        $('#GuardianID').val(GuardianID);
+        $('#RelationID').val(RelationID);
+    })
+
+
+   $('#btn_Add').click(function () {
+        debugger
+        var StudentID = $('#StudentID').val();
+        var GuardianID = $('#GuardianID').val();
+        var RelationID = $('#RelationID').val();
+
+        $.ajax({
+            url: '/StudentGuardianRelation/Insert/',
+            Type: 'Get',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            data: { "StudentID": StudentID, "GuardianID": GuardianID, "RelationID": RelationID },
+            success: function () {
+                alert("Success");
+                GetData();
+            },
+            error: function () {
+                alert("Failed");
+            }
+        })
+    })
+</script>
+
+

@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<div class="container">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="row">
+                <input type="text" id="ID" style="display:none" />
+                <label class="control-label col-lg-2">Name</label>
+                <input type="text" id="Name" class="form-control col-lg-2" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <input type="button" value="Add" id="btn_Add" class="btn btn-primary" />
+                <input type="button" value="Update" id="btn_Update" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+</div>
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Actions</th>
+    </tr>
+    <tbody id="body"></tbody>
+</table>
+
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        debugger
+        GetData();
+    })
+    function GetData() {
+        $('#body').empty();
+        $.ajax({
+            url: '/StudentRelations/GetData',
+            Type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (result) {
+                var rows = '';
+                $.each(result, function (key, value) {
+                    rows = '<tr>'
+                    + '<td>' + value.ID + '</td>'
+                    + '<td>' + value.Name + '</td>'                 
+                    + '<td><input type="button" class="btn btn-primary edit" value="Edit" > <input type="button" class="btn btn-danger delete" value="Delete"></td>'
+                    '</tr>'
+                    $('#body').append(rows);
+                })
+            },
+            error: function (result) {
+            }
+        })
+    }
+    $(document).delegate('.edit','.click',function(){
+        debugger
+        var rowValue = $(this).closest('tr');
+        var ID = rowValue.find("td:eq(0)").text();
+        var Name = rowValue.find("td:eq(1)").text();       
+
+        $('#id').val(ID);
+        $('#Name').val(Name);
+    })
+
+
+   $('#btn_Add').click(function () {
+        debugger
+        var Name = $('#Name').val();
+        $.ajax({
+            url: '/StudentRelations/Insert/',
+            Type: 'Get',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            data: { "Name": Name },
+            success: function () {
+                alert("Success");
+                GetData();
+            },
+            error: function () {
+                alert("Failed");
+            }
+        })
+    })
+</script>
+

@@ -28,48 +28,20 @@ namespace SMSTech.Controllers
             return Json(education,JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost]
-        public ActionResult AddEducation(Education e)
-        {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://192.168.0.119:3000/");
-            var response = client.PostAsJsonAsync("Educations/AddEducation", e).Result;
-            if (response.IsSuccessStatusCode)
-            {
-                Console.Write("Success");
-            }
-            else
-            {
-                Console.Write("Error");
-            }
-            return View(e);
-        }
-        [HttpPut]
-        public ActionResult Edit(int ID)
-        {
-            Education edu = null;
+       //mehran data
 
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("http://192.168.0.119:3000/");
-                //HTTP GET
-                var responseTask = client.GetAsync("Educations?ID=" + ID.ToString());
-                responseTask.Wait();
-
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    var readTask = result.Content.ReadAsAsync<Education>();
-                    readTask.Wait();
-                    edu = readTask.Result;
-                }
-            }
-
-            return View(edu);
-        }
-        public ActionResult Edit()
+        public ActionResult Create()
         {
             return View();
+        }
+        [HttpGet]
+        public ActionResult Insert(string Name)
+        {
+            Education ed = new Education();
+            ed.Name = Name;
+            db.Educations.Add(ed);
+            db.SaveChanges();
+            return Json("Save Successfully", JsonRequestBehavior.AllowGet);
         }
 
 	}

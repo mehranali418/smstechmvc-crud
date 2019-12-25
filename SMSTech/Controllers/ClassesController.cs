@@ -25,26 +25,30 @@ namespace SMSTech.Controllers
             return Json(Class, JsonRequestBehavior.AllowGet);
         }
 
-        //public ActionResult AddClasses()
-        //{
-        //    return View();
-        //}
-        //[HttpPost]
-        //public ActionResult AddClasses(Classes Class)
-        //{
-        //    HttpClient client = new HttpClient();
-        //    client.BaseAddress = new Uri("http://192.168.0.119:3000/");
-        //    var response = client.PostAsJsonAsync("classes/AddClasses", Class).Result;
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        Console.Write("Success");
-        //    }
-        //    else
-        //    {
-        //        Console.Write("Error");
-        //    }
-        //    return View(Class);
-        //}
+
+
+
+        //Mehrans Data
+
+        public ActionResult Create()
+        {
+            ViewBag.LevelID = new SelectList(db.Exams_Grade, "ID", "Level_id");
+            return View();
+        }
+
+
+        [HttpGet]
+        public ActionResult Insert(string Name, string ClassNumber, string LevelID)
+        {
+            Class cls = new Class();
+            cls.Name = Name;
+            int ClassNumbers = Convert.ToInt32(ClassNumber);
+
+            int LevelId = Convert.ToInt32(LevelID);
+            db.Classes.Add(cls);
+            db.SaveChanges();
+            return Json("Save Successfully", JsonRequestBehavior.AllowGet);
+        }
 
     }
 }

@@ -51,5 +51,22 @@ namespace SMSTech.Controllers
             }
             return View(SRelation);
         }
+
+
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Insert(string Name)
+        {
+            Student_Relations std = new Student_Relations();
+            std.Name = Name;
+            db.Student_Relations.Add(std);
+            db.SaveChanges();
+            return Json("Save Successfully", JsonRequestBehavior.AllowGet);
+        }
 	}
 }

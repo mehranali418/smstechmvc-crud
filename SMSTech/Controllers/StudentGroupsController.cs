@@ -21,5 +21,22 @@ namespace SMSTech.Controllers
             var stdgrp = db.Student_Groups.ToList();
             return Json(stdgrp,JsonRequestBehavior.AllowGet);
         }
+
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+
+        [HttpGet]
+        public ActionResult Insert(string Name)
+        {
+            Student_Groups stdgroups = new Student_Groups();
+            stdgroups.Name = Name;
+            db.Student_Groups.Add(stdgroups);
+            db.SaveChanges();
+            return Json("Save Successfully", JsonRequestBehavior.AllowGet);
+        }
 	}
 }

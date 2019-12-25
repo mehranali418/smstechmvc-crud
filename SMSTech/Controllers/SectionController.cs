@@ -48,6 +48,22 @@ namespace SMSTech.Controllers
             return View(Sec);
         }
 
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpGet]
+        public ActionResult Insert(string Name, string ClassID)
+        {
+            Section section = new Section();
+            section.Name = Name;
+            section.ClassID = Convert.ToInt32(ClassID);
+            db.Sections.Add(section);
+            db.SaveChanges();
+            return Json("Save Successfully", JsonRequestBehavior.AllowGet);
+        }
+
 	}
 }
 

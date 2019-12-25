@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace SMSTech.Controllers
 {
-    public class ExamTestController : Controller
+    public class ExamController : Controller
     {
 
         SMST4MEntities1 db = new SMST4MEntities1();
@@ -28,6 +28,27 @@ namespace SMSTech.Controllers
         {
             var Examtest = db.Exams.ToList();
             return Json(Examtest,JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Insert(string TestID, string ExamDate, string IsActive, string ShortName)
+        {
+            Exam ex = new Exam();
+            Boolean Active = true;
+
+            ex.TestID = Convert.ToInt32(TestID);
+            ex.ExamDate = Convert.ToDateTime(ExamDate);
+            ex.IsActive = Active;
+            ex.ShortName = ShortName;
+            db.Exams.Add(ex);
+            db.SaveChanges();
+            return Json("Save Successfully", JsonRequestBehavior.AllowGet);
         }
       
 	}

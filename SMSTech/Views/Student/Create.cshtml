@@ -1,0 +1,330 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h4 class="text-themecolor">Admission Form</h4>
+
+
+    </div>
+    <div class="col-md-7 align-self-center text-right">
+        <div class="d-flex justify-content-end align-items-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Student</a></li>
+                <li class="breadcrumb-item active">Admission Form</li>
+            </ol>
+            <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+        <div class="form-group">
+        <div class="row ">
+            <input type="text" id="ID" style="display:none" />
+            <label class="control-label col-md-3">Section</label>
+            @Html.DropDownList("SectionID", (IEnumerable<SelectListItem>)ViewBag.SectionID, "Select Section ", new { @class = "form-control col-md-3" })
+            <label class="control-label col-lg-2">UserID</label>
+            <input type="text" id="UserID" class="form-control col-lg-2" placeholder="Roll No" />
+        </div>
+    </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="control-label col-lg-2">RollNo</label>
+                <input type="text" id="RollNo" class="form-control col-lg-2" />
+                <label class="control-label col-lg-2">Name</label>
+                <input type="text" id="Name" class="form-control col-lg-2" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="control-label col-lg-2">sDate</label>
+                <input type="date" id="sDate" class="form-control col-lg-2" />
+                <label class="control-label col-lg-2">Status</label>
+                @Html.DropDownList("Status", (IEnumerable<SelectListItem>)ViewBag.Status, "Select Status ", new { @class = "form-control col-lg-2" })
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="control-label col-lg-2">Image</label>
+                <input type="file" id="imageUploadForm" name="image" class="form-control col-lg-2" />
+                <label class="control-label col-lg-2">BirthDate</label>
+                <input type="date" id="BirthDate" class="form-control col-lg-2" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                
+
+                <label class="control-label col-lg-2">StuCNIC</label>
+                <input type="text" id="StuCNIC" name="nic" placeholder="" onkeyup="
+    var nic = this.value;
+    if (nic.match(/^\d{5}$/) !== null) {
+        this.value = nic + '-';
+    } else if (nic.match(/^\d{5}\-\d{7}$/) !== null) {
+        this.value = nic + '-';
+                }" maxlength="15">
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="control-label col-lg-2">FamilyID</label>
+                <input type="text" id="FamilyID" class="form-control col-lg-2" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="control-label col-lg-2">Gender</label>
+                Female: <input id="Gender"
+                               name="Gender"
+                               type="radio"
+                               value="Female" />
+                
+                Male: <input checked="checked"
+                             id="Gender"
+                             name="Gender"
+                             type="radio"
+                             value="Male" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="control-label col-lg-2">JoiningClassID</label>
+                <input type="text" id="JoiningClassID" class="form-control col-lg-2" />
+                <label class="control-label col-lg-2">LeavingDate</label>
+                <input type="date" id="LeavingDate" class="form-control col-lg-2" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="control-label col-lg-2">registration_no</label>
+                <input type="text" id="registration_no" class="form-control col-lg-2" />
+                <label class="control-label col-lg-2">NationalityID</label>
+                @Html.DropDownList("NationalityID", (IEnumerable<SelectListItem>)ViewBag.NationalityID, "Select Nationality", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="control-label col-lg-2">ReligionID</label>
+                @Html.DropDownList("ReligionID", (IEnumerable<SelectListItem>)ViewBag.ReligionID, "Select Religion", new { @class = "form-control col-lg-2" })
+                <label class="control-label col-lg-2">Email</label>
+                <input type="text" id="Email" class="form-control col-lg-2" />
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="control-label col-lg-2">StuGroupID</label>
+                @Html.DropDownList("StuGroupID", (IEnumerable<SelectListItem>)ViewBag.StuGroupID, "Select StuGroupID ", new { @class = "form-control col-lg-2" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <input type="button" value="Add" id="btn_Add" class="btn btn-primary" />
+                <input type="button" value="Update" id="btn_Update" class="btn btn-success" />
+            </div>
+        </div>
+
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>SectionID</th>
+        <th>UserID</th>
+        <th>RollNo</th>
+        <th>Name</th>
+        <th>StartDate</th>
+        <th>Status</th>
+        <th>Image</th>
+        <th>BirthDate</th>
+        <th>StuCNIC</th>
+        <th>FamilyID</th>
+        <th>Gender</th>
+        <th>JoiningClassID</th>
+        <th>LeavingDate</th>
+        <th>Registration</th>
+        <th>Nationality</th>
+        <th>Religion</th>
+        <th>Email</th>
+        <th>StuGroupID</th>
+        <th>Actions</th>
+    </tr>
+    <tbody id="body"></tbody>
+</table>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+
+
+<script>
+    var formData;
+    $(document).ready(function () {
+
+        debugger
+        GetData();
+        $("#imageUploadForm").change(function() {
+            var formData = new FormData();
+            var totalFiles = document.getElementById("imageUploadForm").files.length;
+            for (var i = 0; i < totalFiles; i++) {
+                var file = document.getElementById("imageUploadForm").files[i];
+                formData.append("imageUploadForm", file);
+            }
+            $.ajax({
+                type: "POST",
+                url: '/Student/Upload',
+                data: formData,
+                dataType: 'json',
+                contentType: false,
+                processData: false
+
+            }).done(function() {
+                alert('success');
+            }.fail(function( xhr, status, errorThrown ) {
+                alert('fail');
+
+        })
+
+    )
+
+        })
+    })
+
+    //function GetData()
+    //{
+    //    $('#body').empty();
+    //    $.ajax({
+    //        url: '/Student/GetData',
+    //        type:'GET',
+    //        dataType:'json',
+    //        contentType:'application/json;charset=utf-8',
+    //        success: function (result) {
+    //            var rows = '';
+    //            $.each(result, function (key, value) {
+    //                rows = '<tr>'
+    //                     + '<td>' + value.ID + '</td>'
+    //                    + '<td>' + value.SectionID + '</td>'
+    //                    + '<td>' + value.UserID + '</td>'
+    //                    + '<td>' + value.RollNo + '</td>'
+    //                    + '<td>' + value.Name + '</td>'
+    //                    + '<td>' + value.sDate+ '</td>'
+    //                    + '<td>' + value.Status + '</td>'
+    //                    + '<td>' + value.Image + '</td>'
+    //                    + '<td>' + value.BirthDate+ '</td>'
+    //                    + '<td>' + value.StuCNIC + '</td>'
+    //                    + '<td>' + value.FamilyID + '</td>'
+    //                    + '<td>' + value.Gender + '</td>'
+    //                    + '<td>' + value.JoiningClassID + '</td>'
+    //                    + '<td>' + value.LeavingDate + '</td>'
+    //                    + '<td>' + value.registration_no + '</td>'
+    //                    + '<td>' + value.NationalityID + '</td>'
+    //                    + '<td>' + value.ReligionID+ '</td>'
+    //                    + '<td>' + value.Email + '</td>'
+    //                    + '<td>' + value.StuGroupID + '</td>'
+    //                    + '<td><input type="button" class="btn btn-primary edit" value="Edit"> <input type="button" class="btn btn-danger delete" value="Delete"></td>'
+    //                '</tr>'
+    //                $('#body').append(rows);
+    //            })
+    //        },
+    //        error:function(result) {
+
+    //    }
+    //    })
+    //}
+    //$(document).delegate('.edit','.click',function(){
+    //    debugger
+    //    var rowValue = $(this).closest('tr');
+    //    var ID = rowValue.find("td:eq(0)").text();
+    //    var SectionID = rowValue.find("td:eq(1)").text();
+    //    var UserID = rowValue.find("td:eq(2)").text();
+    //    var RollNo = rowValue.find("td:eq(3)").text();
+    //    var Name = rowValue.find("td:eq(4)").text();
+    //    var sDate= rowValue.find("td:eq(5)").text();
+    //    var Status = rowValue.find("td:eq(6)").text();
+    //    var BirthDate = rowValue.find("td:eq(7)").text();
+    //    var StuCNIC = rowValue.find("td:eq(8)").text();
+    //    var Gender = rowValue.find("td:eq(9)").text();
+    //    var JoiningClassID = rowValue.find("td:eq(10)").text();
+    //    var LeavingDate = rowValue.find("td:eq(11)").text();
+    //    var registration_no = rowValue.find("td:eq(12)").text();
+    //    var Email = rowValue.find("td:eq(13)").text();
+    //    var StuGroupID = rowValue.find("td:eq(14)").text();
+    //    var FamilyID = rowValue.find("td:eq(15)").text();
+    //    var NationalityID = rowValue.find("td:eq(16)").text();
+    //    var ReligionID = rowValue.find("td:eq(17)").text();
+
+    //    $('#ID').val(ID);
+    //    $('#SectionID').val(SectionID);
+    //    $('#UserID').val(UserID);
+    //    $('#RollNo').val(RollNo);
+    //    $('#Name').val(Name);
+    //    $('#sDate').val(sDate);
+    //    $('#Status').val(Status);
+    //    $('#BirthDate').val(BirthDate);
+    //    $('#StuCNIC').val(StuCNIC);
+    //    $('#Gender').val(Gender);
+    //    $('#JoiningClassID').val(JoiningClassID);
+    //    $('#FamilyID').val(FamilyID);
+    //    $('#LeavingDate').val(LeavingDate);
+    //    $('#registration_no').val(registration_no);
+    //    $('#Email').val(Email);
+    //    $('#StuGroupID').val(StuGroupID);
+    //    $('#NationalityID').val(NationalityID);
+    //    $('#ReligionID').val(ReligionID);
+
+    //})
+    $("#imageUploadForm").change(function () {
+        formData = new FormData();
+        var totalFiles = document.getElementById("imageUploadForm").files.length;
+        for (var i = 0; i < totalFiles; i++) {
+            var file = document.getElementById("imageUploadForm").files[i];
+            formData.append("imageUploadForm", file);
+        }
+    });
+    $('#btn_Add').click(function () {
+        Add(formData);
+
+    })
+    function Add() {
+        debugger
+        var data = {};
+        data.SectionID = $('#SectionID').val();
+        data.UserID = $('#UserID').val();
+        data.RollNo = $('#RollNo').val();
+        data.Name = $('#Name').val();
+        data.sDate = $('#sDate').val();
+        data.Status = $('#Status').val();
+        data.FamilyID = $('#FamilyID').val();
+        data.BirthDate = $('#BirthDate').val();
+        data.StuCNIC = $('#StuCNIC').val();
+        data.Gender = $('input[name=Gender]:checked').val();
+        debugger
+        data.JoiningClassID = $('#JoiningClassID').val();
+        data.LeavingDate = $('#LeavingDate').val();
+        data.registration_no = $('#registration_no').val();
+        data.Email = $('#Email').val();
+        data.StuGroupID = $('#StuGroupID').val();
+        data.ReligionID = $('#ReligionID').val();
+        data.NationalityID = $('#NationalityID').val();
+        $.ajax({
+            url: "/Student/Insert",
+            data: JSON.stringify(data),
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function () {
+                alert(" Inserted SuccessFully ");
+                GetData();
+            },
+            error: function () {
+                alert("Failed");
+            }
+        })
+    }
+</script>

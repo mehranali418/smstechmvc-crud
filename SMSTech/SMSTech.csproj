@@ -6705,13 +6705,30 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="ConnectionString.cs" />
+    <Compile Include="Controllers\AcademicClassRoutineController.cs" />
+    <Compile Include="Controllers\AcademicClassRoutineDaysController.cs" />
+    <Compile Include="Controllers\AcademicClassSubjectController.cs" />
+    <Compile Include="Controllers\AcademicCourseController.cs" />
+    <Compile Include="Controllers\AcademicCourseStudentController.cs" />
+    <Compile Include="Controllers\AcademicDaysController.cs" />
+    <Compile Include="Controllers\AcademicHolydaysController.cs" />
+    <Compile Include="Controllers\AcademicPeriodsController.cs" />
+    <Compile Include="Controllers\AcademicSubjectsController.cs" />
+    <Compile Include="Controllers\AllowanceAmountsController.cs" />
+    <Compile Include="Controllers\AllowanceTypesController.cs" />
+    <Compile Include="Controllers\AssessmentAreasController.cs" />
+    <Compile Include="Controllers\AssessmentCategoriesController.cs" />
+    <Compile Include="Controllers\AssessmentColorsController.cs" />
+    <Compile Include="Controllers\AssessmentFindingDetailController.cs" />
     <Compile Include="Controllers\BillsController.cs" />
     <Compile Include="Controllers\ClassesController.cs" />
     <Compile Include="Controllers\ClassLevelsController.cs" />
     <Compile Include="Controllers\ClosingController.cs" />
     <Compile Include="Controllers\EducationsController.cs" />
     <Compile Include="Controllers\ElectricityController.cs" />
-    <Compile Include="Controllers\ExamTestController.cs" />
+    <Compile Include="Controllers\ExamController.cs" />
+    <Compile Include="Controllers\ExamGradeController.cs" />
+    <Compile Include="Controllers\Exams_GroupCollections.cs" />
     <Compile Include="Controllers\GasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RankController.cs" />
@@ -6720,8 +6737,11 @@
     <Compile Include="Controllers\SectionController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\StudentGroupsController.cs" />
-    <Compile Include="Controllers\StudentGuardiansController.cs" />
+    <Compile Include="Controllers\StudentGuardianRelationController.cs" />
+    <Compile Include="Controllers\StudentPaymentsMetaController.cs" />
     <Compile Include="Controllers\StudentRelationsController.cs" />
+    <Compile Include="Controllers\StudentsMetaController.cs" />
+    <Compile Include="Controllers\TBRegisterStudentController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Controllers\telechargesController.cs" />
     <Compile Include="Controllers\TransportChargesController.cs" />
@@ -9793,10 +9813,10 @@
     <Content Include="Views\Home\MailBox.cshtml" />
     <Content Include="Views\Home\MailBoxDetail.cshtml" />
     <Content Include="Views\Home\ComposeMail.cshtml" />
-    <Content Include="Views\Student\AdmissionForm.cshtml" />
-    <Content Include="Views\Student\StudentInformation.cshtml" />
+    <Content Include="Views\Falto View\AdmissionForm.cshtml" />
+    <Content Include="Views\Falto View\StudentInformation.cshtml" />
     <Content Include="Views\Student\Index.cshtml" />
-    <Content Include="Views\Student\Edit.cshtml" />
+    <Content Include="Views\Falto View\Edit.cshtml" />
     <Content Include="Views\Teacher\AddEmployee.cshtml" />
     <Content Include="Views\Teacher\EmployeeDetails.cshtml" />
     <Content Include="Views\Gas\Gas.cshtml" />
@@ -9810,10 +9830,10 @@
     <Content Include="Views\Classes\Index.cshtml" />
     <Content Include="Views\Educations\Index.cshtml" />
     <Content Include="Views\StudentRelations\Index.cshtml" />
-    <Content Include="Views\StudentGuardians\Index.cshtml" />
+    <Content Include="Views\StudentGuardiansRelations\Index.cshtml" />
     <Content Include="Views\ClassLevels\Index.cshtml" />
     <Content Include="Views\Rank\Index.cshtml" />
-    <Content Include="Views\Classes\AddClasses.cshtml" />
+    <Content Include="Views\Falto View\AddClasses.cshtml" />
     <Content Include="Views\ClassLevels\AddClassLevel.cshtml" />
     <Content Include="Views\Educations\AddEducation.cshtml" />
     <Content Include="Views\Electricity\create.cshtml" />
@@ -9821,11 +9841,11 @@
     <Content Include="Views\Religion\AddReligions.cshtml" />
     <Content Include="Views\Gas\create.cshtml" />
     <Content Include="Views\Role\AddRoles.cshtml" />
-    <Content Include="Views\StudentGuardians\AddStudentGuardians.cshtml" />
+    <Content Include="Views\StudentGuardiansRelations\AddStudentGuardians.cshtml" />
     <Content Include="Views\StudentRelations\AddRelations.cshtml" />
     <Content Include="Views\TransportCharges\create.cshtml" />
     <Content Include="Views\Watercharges\create.cshtml" />
-    <Content Include="Views\Student\AddStudent.cshtml" />
+    <Content Include="Views\Falto View\AddStudent.cshtml" />
     <Content Include="Views\Section\AddSection.cshtml" />
     <Content Include="Views\User\AddUser.cshtml" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -9840,8 +9860,16 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-    <Content Include="Views\ExamTest\Index.cshtml" />
+    <Content Include="Views\Exam\Index.cshtml" />
     <Content Include="Views\StudentGroups\Index.cshtml" />
+    <Content Include="Views\Student\Create.cshtml" />
+    <Content Include="Views\Classes\Create.cshtml" />
+    <Content Include="Views\Educations\Create.cshtml" />
+    <Content Include="Views\Exam\Create.cshtml" />
+    <Content Include="Views\Section\Create.cshtml" />
+    <Content Include="Views\StudentGroups\Create.cshtml" />
+    <Content Include="Views\StudentGuardiansRelations\Create.cshtml" />
+    <Content Include="Views\StudentRelations\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -9851,7 +9879,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Bills\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

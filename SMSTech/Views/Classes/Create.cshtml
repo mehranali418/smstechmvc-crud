@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<br />
+<div class="container">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="row">
+                <input type="text" id="ID" style="display:none" />
+                <label class="control-label col-lg-2">Name</label>
+                <input type="text" id="Name" class="form-control col-lg-2" />
+                <label class="control-label col-lg-2">ClassNumber</label>
+                <input type="text" id="ClassNumber" class="form-control col-lg-2" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+
+                <label class="control-label col-lg-2">LevelID</label>
+                <input type="text" id="LevelID" class="form-control col-lg-2" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <input type="button" value="Add" id="btn_Add" class="btn btn-primary" />
+                <input type="button" value="Update" id="btn_Update" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+</div>
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>ClassNumber</th>
+        <th>LevelID</th>
+        <th>Actions</th>
+    </tr>
+    <tbody id="body"></tbody>
+</table>
+
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        debugger
+        GetData();
+    })
+    function GetData() {
+        $('#body').empty();
+        $.ajax({
+            url: '/Classes/GetData',
+            Type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (result) {
+                var rows = '';
+                $.each(result, function (key, value) {
+                    rows = '<tr>'
+                    + '<td>' + value.ID + '</td>'
+                    + '<td>' + value.Name + '</td>'
+                    + '<td>' + value.ClassNumber + '</td>'
+                    + '<td>' + value.LevelID + '</td>'
+                    + '<td><input type="button" class="btn btn-primary edit" value="Edit" > <input type="button" class="btn btn-danger delete" value="Delete"></td>'
+                    '</tr>'
+                    $('#body').append(rows);
+                })
+            },
+            error: function (result) {
+            }
+        })
+    }
+    $(document).delegate('.edit', 'click', function () {
+        debugger
+        var rowValue = $(this).closest('tr');
+        var ID = rowValue.find("td:eq(0)").text();
+        var Name = rowValue.find("td:eq(1)").text();
+        var ClassNumber = rowValue.find("td:eq(2)").text();
+        var LevelID = rowValue.find("td:eq(3)").text();
+
+
+        $('#ID').val(ID);
+        $('#Name').val(Name);
+        $('#ClassNumber').val(ClassNumber);
+        $('#LevelID').val(LevelID);
+
+    })
+    $('#btn_Add').click(function () {
+        debugger
+        var Name = $('#Name').val();
+        var ClassNumber = $('#ClassNumber').val();
+        var LevelID = $('#LevelID').val();
+        $.ajax({
+            url: '/Classes/Insert/',
+            Type: 'Get',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            data: { "Name": Name, "ClassNumber": ClassNumber, "LevelID": LevelID },
+            success: function () {
+                alert("Success");
+                GetData();
+            },
+            error: function () {
+                alert("Failed");
+            }
+        })
+    })
+</script>
